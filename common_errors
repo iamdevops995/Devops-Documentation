@@ -1,0 +1,63 @@
+###ERROR####
+I0518 06:14:45.275468 4110 version.go:261] remote version is much newer: v1.33.1; falling back to: stable-1.32 [init] Using Kubernetes version: v1.32.5 [preflight] 
+Running pre-flight checks error execution phase preflight: [preflight] Some fatal errors occurred: [ERROR FileContent--proc-sys-net-ipv4-ip_forward]: /proc/sys/net/ipv4/ip_forward contents are not set to 1 [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+###Steps to troubleshoot###
+1) Enable IP Forwarding Temporarily (Until Reboot) Run the following command:
+sudo sysctl -w net.ipv4.ip_forward=1 #This will enable IP forwarding immediately.
+2)Enable IP Forwarding Permanently (Survives Reboot) To make sure the setting persists after a reboot, modify the sysctl configuration file:
+echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+Then apply the changes:
+sudo sysctl -p
+3) Verify the Setting After running the commands above, check if the value is set correctly:
+sysctl net.ipv4.ip_forward
+You should see: ## net.ipv4.ip_forward = 1
+================================================================================================================================================================================================
+  ###ERROR###
+Defaulted container "kube-flannel" out of: kube-flannel, install-cni-plugin (init), 
+install-cni (init) I0518 06:27:29.572444 1 main.go:211] 
+CLI flags config: {etcdEndpoints:http://127.0.0.1:4001,http://127.0.0.1:2379 etcdPrefix:/coreos.com/network etcdKeyfile: etcdCertfile: etcdCAFile: etcdUsername: etcdPassword: version:false kubeSubnetMgr:true kubeApiUrl: kubeAnnotationPrefix:flannel.alpha.coreos.com kubeConfigFile: iface:[] ifaceRegex:[] ipMasq:true ifaceCanReach: subnetFile:/run/flannel/subnet.env publicIP: publicIPv6: subnetLeaseRenewMargin:60 healthzIP:0.0.0.0 healthzPort:0 iptablesResyncSeconds:5 iptablesForwardRules:true netConfPath:/etc/kube-flannel/net-conf.json setNodeNetworkUnavailable:true} W0518 06:27:29.572531 1 client_config.go:618] Neither --kubeconfig nor --master was specified. Using the inClusterConfig. This might not work. I0518 06:27:29.583474 1 kube.go:139] Waiting 10m0s for node controller to sync I0518 06:27:29.583574 1 kube.go:469] Starting kube subnet manager I0518 06:27:30.583681 1 kube.go:146] Node controller sync successful I0518 06:27:30.583707 1 main.go:231] Created subnet manager: Kubernetes Subnet Manager - ip-172-31-86-226 I0518 06:27:30.583715 1 main.go:234] Installing signal handlers I0518 06:27:30.583955 1 main.go:468] Found network config - Backend type: vxlan E0518 06:27:30.584000 1 main.go:268] Failed to check br_netfilter: 
+stat /proc/sys/net/bridge/bridge-nf-call-iptables: no such file or directory
+####Reason for Error:
+It looks like your Kubernetes setup is running into an issue with the br_netfilter module,
+which is required for Flannel networking to function properly. 
+The error indicates that the system is missing the /proc/sys/net/bridge/bridge-nf-call-iptables file, 
+ which usually happens when the br_netfilter kernel module is not loaded.
+###Steps to troubleshoot###
+1) Load the br_netfilter Module Run the following command to manually load the module:
+sudo modprobe br_netfilter
+2) Enable Bridge-NF Call in Sysctl After loading the module, enable the required settings:
+echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-ip6tables=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+3) Verify the Module is Loaded Check if the module is active:
+lsmod | grep br_netfilter ###If nothing appears, the module might not be available in your kernel.
+4) Ensure the Module Loads on Boot Add the module to /etc/modules-load.d/k8s.conf
+echo "br_netfilter" | sudo tee /etc/modules-load.d/k8s.conf
+5) Restart Kubernetes Components If the module is now loaded, restart your Kubernetes components:
+sudo systemctl restart kubelet
+===============================================================================================================
+###ERROR###
+[preflight] Running pre-flight checks error execution phase preflight: [preflight] Some fatal errors occurred: [ERROR IsPrivilegedUser]: user is not running as root [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...` To see the stack trace of this error execute with --v=5 or higher
+###Reason for Error:
+The error [ERROR IsPrivilegedUser]: user is not running as root occurs because Kubernetes requires certain commands 
+to be executed with root privileges. Here’s how you can fix it:
+###Steps to troubleshoot###
+1) Run kubeadm join command with sudo previledge:
+EX: 
+sudo kubeadm join <control-plane-ip>:6443 --token <your-token> --discovery-token-ca-cert-hash sha256:<hash>
+==========================================================================================================================
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
