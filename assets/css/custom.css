@@ -120,3 +120,61 @@ footer {
   margin-top: 50px;
   color: gray;
 }
+
+/* ==========================================================
+   Cover Page
+========================================================== */
+
+.cover {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white !important;
+}
+
+.cover-main {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.cover-main img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.cover-main h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.cover-main blockquote {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    font-size: 22px;
+}
+
+.cover-main p:last-child a {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cover-main p:last-child a:first-child {
+    background: #2563eb;
+    color: white;
+}
+
+.cover-main p:last-child a:last-child {
+    border: 2px solid white;
+    color: white;
+}
+
+.cover-main p:last-child a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
