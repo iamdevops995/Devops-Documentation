@@ -158,3 +158,73 @@ margin-top:60px;
 text-align:center;
 
 }
+
+/* =====================================================
+   Technology Cards
+===================================================== */
+
+.tech-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.tech-card{
+
+background:white;
+
+border-radius:18px;
+
+padding:30px;
+
+text-align:center;
+
+text-decoration:none;
+
+border:1px solid #e5e7eb;
+
+transition:.3s;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.tech-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 40px rgba(37,99,235,.20);
+
+border-color:#2563eb;
+
+}
+
+.tech-logo{
+
+height:72px;
+
+margin-bottom:20px;
+
+}
+
+.tech-card h3{
+
+margin:10px 0;
+
+color:#2563eb;
+
+}
+
+.tech-card p{
+
+color:#64748b;
+
+line-height:1.6;
+
+}
