@@ -1,57 +1,153 @@
-.tech-grid{
+/* ==========================================================================
+   cards.css — technology cards and learning path cards
+   ========================================================================== */
 
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-gap:30px;
-
-margin-top:40px;
-
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  gap: 22px;
+  margin: 0 0 1rem;
 }
 
-.tech-card{
-
-background:white;
-
-padding:35px;
-
-border-radius:18px;
-
-text-decoration:none;
-
-color:#111827;
-
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-transition:.3s;
-
-border:1px solid #e5e7eb;
-
+.markdown-section .tech-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px 24px;
+  background: var(--dd-surface);
+  border: 1px solid var(--dd-border);
+  border-radius: var(--dd-r-lg);
+  box-shadow: var(--dd-shadow-sm);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dd-border);
+  transition: transform .22s var(--dd-ease), box-shadow .22s var(--dd-ease),
+              border-color .22s var(--dd-ease);
 }
 
-.tech-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 20px 45px rgba(37,99,235,.25);
-
-border-color:#2563eb;
-
+/* Accent bar that reveals on hover */
+.markdown-section .tech-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--dd-blue-600), var(--dd-blue-400));
+  opacity: 0;
+  transition: opacity .22s var(--dd-ease);
 }
 
-.tech-card .icon{
-
-font-size:55px;
-
-margin-bottom:20px;
-
+.markdown-section .tech-card:hover,
+.markdown-section .tech-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--dd-blue-200);
+  box-shadow: var(--dd-shadow-lg);
 }
 
-.tech-card h2{
+.markdown-section .tech-card:hover::before,
+.markdown-section .tech-card:focus-visible::before {
+  opacity: 1;
+}
 
-color:#2563eb;
+.tech-card .icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 18px;
+  border-radius: var(--dd-r-md);
+  background: var(--dd-blue-50);
+  color: var(--dd-blue-600);
+  font-size: 25px;
+  transition: background .22s var(--dd-ease), color .22s var(--dd-ease);
+}
 
-margin:10px 0;
+.markdown-section .tech-card:hover .icon {
+  background: var(--dd-blue-600);
+  color: #fff;
+}
 
+.markdown-section .tech-card h3 {
+  margin: 0 0 .35rem;
+  font-size: 1.12rem;
+  color: var(--dd-navy-900);
+}
+
+.markdown-section .tech-card p {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--dd-text-mute);
+}
+
+.tech-card .card-meta {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--dd-border);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--dd-blue-600);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.markdown-section .tech-card:hover .card-meta i {
+  transform: translateX(4px);
+}
+
+.tech-card .card-meta i {
+  transition: transform .22s var(--dd-ease);
+}
+
+/* ------------------------------------------------------ learning paths ---- */
+
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.markdown-section .path-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 22px;
+  background: var(--dd-surface);
+  border: 1px solid var(--dd-border);
+  border-radius: var(--dd-r-md);
+  box-shadow: var(--dd-shadow-sm);
+  text-decoration: none;
+  transition: border-color .2s var(--dd-ease), box-shadow .2s var(--dd-ease),
+              transform .2s var(--dd-ease);
+}
+
+.markdown-section .path-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--dd-blue-200);
+  box-shadow: var(--dd-shadow-md);
+}
+
+.path-card .step {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--dd-navy-900);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.path-card .path-body strong {
+  display: block;
+  color: var(--dd-navy-900);
+  font-size: 1rem;
+  margin-bottom: .15rem;
+}
+
+.path-card .path-body span {
+  font-size: .87rem;
+  color: var(--dd-text-mute);
 }

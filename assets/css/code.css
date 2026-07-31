@@ -1,0 +1,150 @@
+/* ==========================================================================
+   code.css — inline code, blocks, copy button
+   ========================================================================== */
+
+.markdown-section code {
+  font-family: var(--mono-font-family);
+  font-size: .875em;
+}
+
+/* Inline */
+.markdown-section p > code,
+.markdown-section li > code,
+.markdown-section td > code,
+.markdown-section h1 code,
+.markdown-section h2 code,
+.markdown-section h3 code,
+.markdown-section h4 code {
+  padding: .16em .42em;
+  border-radius: 5px;
+  background: var(--dd-blue-50);
+  border: 1px solid var(--dd-blue-100);
+  color: var(--dd-blue-700);
+  font-weight: 500;
+}
+
+/* Blocks */
+.markdown-section pre {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 0;
+  background: var(--dd-navy-900);
+  border: 1px solid #1f2a3d;
+  border-radius: var(--dd-r-md);
+  box-shadow: var(--dd-shadow-md);
+  overflow: hidden;
+}
+
+.markdown-section pre::after {
+  display: none; /* hide docsify's language label */
+}
+
+.markdown-section pre > code {
+  display: block;
+  padding: 20px 22px;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: .855rem;
+  line-height: 1.65;
+  border: none;
+  border-radius: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prism token colours tuned for the dark block */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata { color: #64748b; font-style: italic; }
+
+.token.punctuation { color: #94a3b8; }
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted { color: #f87171; }
+
+.token.boolean,
+.token.number { color: #fbbf24; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted { color: #86efac; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable { color: #7dd3fc; }
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name { color: #93c5fd; }
+
+.token.keyword { color: #c4b5fd; }
+
+.token.regex,
+.token.important { color: #fdba74; }
+
+/* ------------------------------------------------------- copy button ---- */
+
+.docsify-copy-code-button {
+  top: 8px !important;
+  right: 8px !important;
+  padding: 6px 12px !important;
+  background: rgba(255, 255, 255, .1) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  border-radius: 7px !important;
+  font-family: var(--base-font-family) !important;
+  font-size: .74rem !important;
+  font-weight: 600 !important;
+  opacity: 0;
+  transition: opacity .18s var(--dd-ease), background .18s var(--dd-ease);
+}
+
+.markdown-section pre:hover .docsify-copy-code-button,
+.docsify-copy-code-button:focus-visible {
+  opacity: 1;
+}
+
+.docsify-copy-code-button:hover {
+  background: var(--dd-blue-600) !important;
+  color: #fff !important;
+  border-color: var(--dd-blue-600) !important;
+}
+
+.docsify-copy-code-button span.label {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------- tabs ---- */
+
+.docsify-tabs__tab {
+  font-family: var(--base-font-family);
+  font-weight: 600;
+  font-size: .88rem;
+  border-radius: var(--dd-r-sm) var(--dd-r-sm) 0 0;
+}
+
+.docsify-tabs__tab--active {
+  color: var(--dd-blue-700) !important;
+  border-bottom-color: var(--dd-blue-600) !important;
+}
+
+/* ------------------------------------------------------------ mermaid ---- */
+
+.mermaid {
+  margin: 2rem 0;
+  padding: 24px;
+  background: var(--dd-surface);
+  border: 1px solid var(--dd-border);
+  border-radius: var(--dd-r-md);
+  text-align: center;
+  overflow-x: auto;
+}

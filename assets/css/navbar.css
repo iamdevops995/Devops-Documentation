@@ -1,0 +1,136 @@
+/* ==========================================================================
+   navbar.css — sticky top bar
+   ========================================================================== */
+
+.app-nav {
+  position: fixed;
+  top: 0;
+  left: var(--dd-sidebar-w);
+  right: 0;
+  height: var(--dd-navbar-h);
+  margin: 0;
+  padding: 0 76px 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  background: rgba(255, 255, 255, .86);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--dd-border);
+  text-align: right;
+  z-index: 30;
+  transition: left .25s var(--dd-ease);
+}
+
+.app-nav ul,
+.app-nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.app-nav li {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.app-nav li a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: 8px 14px;
+  border-radius: var(--dd-r-sm);
+  font-size: .88rem;
+  font-weight: 550;
+  color: var(--dd-text-soft);
+  text-decoration: none;
+  border-bottom: none !important;
+  transition: background .16s var(--dd-ease), color .16s var(--dd-ease);
+}
+
+.app-nav li a:hover,
+.app-nav li a.active {
+  background: var(--dd-blue-50);
+  color: var(--dd-blue-700);
+}
+
+/* Nested nav dropdowns */
+.app-nav li ul {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 190px;
+  padding: 6px;
+  background: var(--dd-white);
+  border: 1px solid var(--dd-border);
+  border-radius: var(--dd-r-md);
+  box-shadow: var(--dd-shadow-lg);
+  display: none;
+  flex-direction: column;
+  text-align: left;
+}
+
+.app-nav li:hover > ul,
+.app-nav li:focus-within > ul {
+  display: flex;
+}
+
+.app-nav li ul li {
+  display: block;
+  width: 100%;
+}
+
+.app-nav li ul li a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Content sits below the fixed bar */
+.content {
+  padding-top: var(--dd-navbar-h);
+}
+
+/* When the sidebar is collapsed on desktop the bar reclaims the space */
+body.close .app-nav {
+  left: 0;
+}
+
+/* ------------------------------------------------------- github corner ---- */
+
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 35;
+  border-bottom: none;
+}
+
+.github-corner svg {
+  width: 56px;
+  height: 56px;
+  fill: var(--dd-blue-600);
+  color: var(--dd-white);
+}
+
+.github-corner:hover svg {
+  fill: var(--dd-blue-700);
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave .56s ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-25deg); }
+  40%, 80% { transform: rotate(10deg); }
+}

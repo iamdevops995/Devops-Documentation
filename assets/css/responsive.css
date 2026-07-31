@@ -1,0 +1,180 @@
+/* ==========================================================================
+   responsive.css — must stay last in the stylesheet order
+   ========================================================================== */
+
+/* ------------------------------------------------- large desktop ---- */
+
+@media screen and (min-width: 1600px) {
+  :root { --dd-content-w: 1280px; }
+}
+
+/* ---------------------------------------------------- desktop ---- */
+
+@media screen and (min-width: 769px) {
+  /* The sidebar is permanent, so the hamburger is not needed */
+  .sidebar-toggle { display: none; }
+
+  .content { left: var(--dd-sidebar-w); }
+}
+
+/* ------------------------------------------------ small desktop ---- */
+
+@media screen and (max-width: 1100px) {
+  .hero { padding: 68px 32px; }
+
+  .hero-right {
+    width: 168px;
+    height: 168px;
+  }
+
+  .hero-right i,
+  .hero-right .hero-glyph { font-size: 78px; }
+
+  .landing { padding: 0 28px; }
+}
+
+/* -------------------------------------------------------- tablet ---- */
+
+@media screen and (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .hero-right { display: none; }
+
+  .markdown-section h2 { font-size: 1.4rem; }
+}
+
+/* ------------------------------------------- mobile / drawer mode ---- */
+
+@media screen and (max-width: 768px) {
+  .app-nav {
+    position: static;
+    left: 0;
+    height: auto;
+    padding: 8px 10px;
+    justify-content: flex-start;
+    background: var(--dd-bg);
+    border-bottom: 1px solid var(--dd-border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* When mergeNavbar folds the nav into the drawer */
+  .sidebar .app-nav {
+    order: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sidebar .app-nav > ul {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .content { padding-top: 0; }
+
+  /* Drawer */
+  .sidebar {
+    width: 290px;
+    box-shadow: var(--dd-shadow-lg);
+    transition: transform .25s var(--dd-ease);
+  }
+
+  .sidebar-toggle {
+    top: 10px;
+    left: 12px;
+    transition: left .25s var(--dd-ease);
+  }
+
+  body.close .sidebar-toggle { left: 300px; }
+
+  body.close .app-nav { left: 0; }
+
+  /* Layout */
+  .markdown-section { padding: 28px 20px 72px; }
+
+  .hero {
+    padding: 56px 22px;
+    margin-bottom: 44px;
+  }
+
+  .landing { padding: 0 20px; }
+
+  .markdown-section .hero h1 { font-size: 1.95rem; }
+
+  .hero-buttons { gap: 12px; }
+
+  .markdown-section .btn-primary,
+  .markdown-section .btn-secondary {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: .92rem;
+  }
+
+  .tech-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  .path-grid { grid-template-columns: 1fr; }
+
+  .stats { grid-template-columns: repeat(2, 1fr); }
+
+  .stat + .stat { box-shadow: none; }
+
+  .markdown-section .stat .stat-value { font-size: 2rem; }
+
+  .callout {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 22px;
+  }
+
+  .markdown-section table { font-size: .85rem; }
+
+  .markdown-section table th,
+  .markdown-section table td { padding: 10px 12px; }
+
+  .github-corner svg { width: 44px; height: 44px; }
+}
+
+/* -------------------------------------------------- small mobile ---- */
+
+@media screen and (max-width: 420px) {
+  .stats { grid-template-columns: 1fr; }
+
+  .markdown-section .hero h1 { font-size: 1.7rem; }
+
+  .hero-eyebrow { font-size: .7rem; }
+
+  .sidebar { width: 84vw; }
+
+  body.close .sidebar-toggle { left: calc(84vw + 10px); }
+}
+
+/* -------------------------------------------------------- print ---- */
+
+@media print {
+  .sidebar,
+  .sidebar-toggle,
+  .app-nav,
+  .github-corner,
+  .docsify-pagination-container,
+  .docsify-copy-code-button { display: none !important; }
+
+  .content { left: 0; padding-top: 0; }
+
+  .markdown-section { max-width: 100%; padding: 0; }
+
+  .hero {
+    background: none !important;
+    color: #000 !important;
+    box-shadow: none;
+  }
+
+  .markdown-section .hero h1,
+  .markdown-section .hero .hero-tagline,
+  .markdown-section .hero .hero-sub { color: #000 !important; }
+}
