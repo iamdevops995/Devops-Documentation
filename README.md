@@ -1,105 +1,174 @@
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-left">
+
 # 🚀 DevOps Documentation Portal
 
-> Cloud • DevOps • Platform Engineering • Automation
+### Cloud • DevOps • Platform Engineering • Automation
 
-Welcome to my personal knowledge base containing production experience, cloud architecture, automation scripts, interview preparation, troubleshooting guides, and DevOps best practices.
+Production Notes • Interview Preparation • Troubleshooting • Hands-on Labs
+
+<div class="hero-buttons">
+
+<a class="btn-primary" href="#/AWS/README">🚀 Start Learning</a>
+
+<a class="btn-secondary" href="https://github.com/iamdevops995/Devops-Documentation" target="_blank">⭐ GitHub</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+# ☁️
+
+</div>
+
+</div>
 
 ---
 
-## 🚀 Quick Access
+# 🌟 Technologies
 
 <div class="tech-grid">
 
 <a class="tech-card" href="#/AWS/README">
-<img src="assets/images/icons/aws.svg" class="tech-logo">
-<h3>AWS</h3>
-<p>EC2 • IAM • VPC • S3 • ECS • EKS</p>
+
+<div class="icon">☁️</div>
+
+## AWS
+
+EC2 • IAM • VPC • ECS • EKS • Lambda
+
 </a>
 
 <a class="tech-card" href="#/Azure/README">
-<img src="assets/images/icons/azure.svg" class="tech-logo">
-<h3>Azure</h3>
-<p>VM • Storage • AKS • Azure DevOps</p>
+
+<div class="icon">🔷</div>
+
+## Azure
+
+VM • AKS • Storage • Azure DevOps
+
 </a>
 
 <a class="tech-card" href="#/GCP/README">
-<img src="assets/images/icons/gcp.svg" class="tech-logo">
-<h3>Google Cloud</h3>
-<p>Cloud Run • GKE • Compute • Filestore</p>
+
+<div class="icon">🌍</div>
+
+## Google Cloud
+
+Compute • Cloud Run • GKE • Filestore
+
 </a>
 
 <a class="tech-card" href="#/Kubernetes/README">
-<img src="assets/images/icons/kubernetes.svg" class="tech-logo">
-<h3>Kubernetes</h3>
-<p>Pods • Services • Helm • Ingress</p>
+
+<div class="icon">☸️</div>
+
+## Kubernetes
+
+Pods • Services • Helm • Ingress
+
 </a>
 
 <a class="tech-card" href="#/Docker/README">
-<img src="assets/images/icons/docker.svg" class="tech-logo">
-<h3>Docker</h3>
-<p>Images • Containers • Compose</p>
+
+<div class="icon">🐳</div>
+
+## Docker
+
+Images • Containers • Compose
+
 </a>
 
 <a class="tech-card" href="#/Terraform/README">
-<img src="assets/images/icons/terraform.svg" class="tech-logo">
-<h3>Terraform</h3>
-<p>Modules • State • Providers</p>
+
+<div class="icon">🏗️</div>
+
+## Terraform
+
+Providers • Modules • State
+
 </a>
 
 <a class="tech-card" href="#/Ansible/README">
-<img src="assets/images/icons/ansible.svg" class="tech-logo">
-<h3>Ansible</h3>
-<p>Inventory • Playbooks • Roles</p>
+
+<div class="icon">⚙️</div>
+
+## Ansible
+
+Inventory • Roles • Playbooks
+
 </a>
 
 <a class="tech-card" href="#/Jenkins/README">
-<img src="assets/images/icons/jenkins.svg" class="tech-logo">
-<h3>Jenkins</h3>
-<p>Pipelines • CI/CD • Agents</p>
+
+<div class="icon">🚀</div>
+
+## Jenkins
+
+Pipelines • CI/CD • Shared Libraries
+
 </a>
 
 </div>
 
 ---
 
-# 📚 Learning Paths
+# 📊 Documentation Statistics
 
-| Learning Path | Topics |
-|---------------|--------|
-| ☁️ AWS | EC2, IAM, VPC, Route53, ECS, EKS |
-| 🔷 Azure | Azure VM, Storage, AKS, Azure DevOps |
-| 🌍 GCP | Cloud Run, Compute Engine, GKE |
-| ☸ Kubernetes | Pods, Services, Deployments, Helm |
-| 🏗 Terraform | Providers, Modules, State |
-| ⚙ Ansible | Inventory, Roles, Playbooks |
-| 🚀 Jenkins | Pipelines, Shared Libraries |
-| 💻 PowerShell | Automation & Scripting |
+<div class="stats">
+
+<div class="stat">
+
+# 200+
+
+Articles
+
+</div>
+
+<div class="stat">
+
+# 100+
+
+Scripts
+
+</div>
+
+<div class="stat">
+
+# 50+
+
+Labs
+
+</div>
+
+<div class="stat">
+
+# ∞
+
+Learning
+
+</div>
+
+</div>
 
 ---
 
-# ⭐ Featured Content
+# 📚 Featured Learning Paths
 
-- 🚀 Production Deployment Guides
-- ☁️ Cloud Architecture
-- 📊 Monitoring & Logging
-- 🛠 Root Cause Analysis
-- 🎯 Interview Questions
-- 🔒 Security Best Practices
-- 📖 Troubleshooting Guides
-
----
-
-# 📈 Current Progress
-
-- ✅ AWS
-- ✅ Azure
-- ✅ Google Cloud
-- ✅ Kubernetes
-- ✅ Terraform
-- ✅ Ansible
-- ✅ Jenkins
-- 🚧 More content added every week.
+- ☁️ AWS Solutions Architect
+- ☸ Kubernetes Administration
+- 🌍 Google Cloud Engineer
+- 🔷 Azure DevOps
+- 🏗 Terraform
+- ⚙️ Ansible
+- 🚀 Jenkins CI/CD
+- 💻 PowerShell Automation
 
 ---
 
-> **"Document once. Learn forever."** 🚀
+> **"Learn • Build • Automate • Share"**

@@ -1,99 +1,20 @@
 #!/bin/bash
 
-set -e
+mkdir -p assets/css
+mkdir -p assets/js
+mkdir -p assets/images/icons
 
-echo "==============================================="
-echo " Creating DevOps Documentation Structure"
-echo "==============================================="
+touch assets/css/theme.css
+touch assets/css/hero.css
+touch assets/css/cards.css
+touch assets/css/sidebar.css
+touch assets/css/navbar.css
+touch assets/css/tables.css
+touch assets/css/code.css
+touch assets/css/responsive.css
 
-# Root directories
-directories=(
-    "assets"
-    "assets/css"
-    "assets/js"
-    "assets/images"
+touch assets/js/custom.js
+touch assets/js/theme.js
+touch assets/js/search.js
 
-    "AWS"
-    "Azure"
-    "GCP"
-    "Kubernetes"
-    "Docker"
-    "Terraform"
-    "Ansible"
-    "Jenkins"
-    "PowerShell"
-    "Linux"
-    "Git"
-    "Networking"
-    "Security"
-    "Monitoring"
-    "Interview"
-    "RCA"
-    "Troubleshooting"
-)
-
-# Create directories
-for dir in "${directories[@]}"; do
-    mkdir -p "$dir"
-    echo "Created: $dir"
-done
-
-echo ""
-echo "==============================================="
-echo " Creating placeholder README.md files"
-echo "==============================================="
-
-# Create README.md for each section
-sections=(
-    AWS
-    Azure
-    GCP
-    Kubernetes
-    Docker
-    Terraform
-    Ansible
-    Jenkins
-    PowerShell
-    Linux
-    Git
-    Networking
-    Security
-    Monitoring
-    Interview
-    RCA
-    Troubleshooting
-)
-
-for section in "${sections[@]}"; do
-cat <<EOF > "$section/README.md"
-# $section
-
-> Documentation coming soon.
-
-EOF
-echo "Created: $section/README.md"
-done
-
-echo ""
-echo "==============================================="
-echo " Creating root files"
-echo "==============================================="
-
-touch index.html
-touch README.md
-touch _sidebar.md
-touch _navbar.md
-touch coverpage.md
-touch .nojekyll
-
-echo "Created: index.html"
-echo "Created: README.md"
-echo "Created: _sidebar.md"
-echo "Created: _navbar.md"
-echo "Created: coverpage.md"
-echo "Created: .nojekyll"
-
-echo ""
-echo "==============================================="
-echo " Project structure created successfully!"
-echo "==============================================="
+echo "Project structure created successfully."

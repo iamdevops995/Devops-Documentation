@@ -1,230 +1,35 @@
-:root{
-
---theme-color:#2563eb;
-
---base-font-family:'Inter',sans-serif;
-
---base-font-size:16px;
-
---content-max-width:1200px;
-
---sidebar-width:320px;
-
---sidebar-background:#0f172a;
-
---sidebar-name-color:#fff;
-
---sidebar-nav-link-color:#cbd5e1;
-
---sidebar-nav-link-color--active:#60a5fa;
-
---navbar-root-color:#334155;
-
---search-input-background-color:#1e293b;
-
---search-input-color:white;
-
---search-input-placeholder-color:#94a3b8;
-
---code-theme-background:#111827;
-
---cover-background:
-linear-gradient(135deg,#0f172a,#1d4ed8);
-
-}
-
-/* Body */
-
-body{
-
-font-family:'Inter',sans-serif;
-
-}
-
-/* Sidebar */
-
-.sidebar{
-
-border-right:none;
-
-}
-
-/* Logo */
-
-.sidebar .app-name{
-
-font-size:26px;
-
-font-weight:700;
-
-}
-
-/* Cards */
-
-.tech-grid{
+.stats{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:24px;
-
-margin-top:30px;
-
-}
-
-.tech-card{
-
-background:white;
-
-border-radius:16px;
-
-padding:24px;
-
-text-decoration:none;
-
-transition:.25s;
-
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-color:#1f2937;
-
-}
-
-.tech-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 20px 40px rgba(37,99,235,.25);
-
-}
-
-.tech-card .icon{
-
-font-size:52px;
-
-margin-bottom:15px;
-
-}
-
-.tech-card h3{
-
-margin:10px 0;
-
-color:#2563eb;
-
-}
-
-.tech-card p{
-
-color:#64748b;
-
-font-size:14px;
-
-}
-
-/* Tables */
-
-table{
-
-display:table;
-
-width:100%;
-
-}
-
-/* Images */
-
-img{
-
-border-radius:10px;
-
-}
-
-/* Code */
-
-pre{
-
-border-radius:12px;
-
-}
-
-/* Footer */
-
-footer{
-
-margin-top:60px;
-
-text-align:center;
-
-}
-
-/* =====================================================
-   Technology Cards
-===================================================== */
-
-.tech-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 
 gap:25px;
 
-margin-top:40px;
+margin:50px 0;
 
 }
 
-.tech-card{
+.stat{
 
 background:white;
-
-border-radius:18px;
 
 padding:30px;
 
 text-align:center;
 
-text-decoration:none;
+border-radius:18px;
 
-border:1px solid #e5e7eb;
-
-transition:.3s;
-
-box-shadow:0 8px 25px rgba(0,0,0,.08);
+box-shadow:0 10px 30px rgba(0,0,0,.08);
 
 }
 
-.tech-card:hover{
+.stat h1{
 
-transform:translateY(-8px);
-
-box-shadow:0 15px 40px rgba(37,99,235,.20);
-
-border-color:#2563eb;
-
-}
-
-.tech-logo{
-
-height:72px;
-
-margin-bottom:20px;
-
-}
-
-.tech-card h3{
-
-margin:10px 0;
+font-size:45px;
 
 color:#2563eb;
 
-}
-
-.tech-card p{
-
-color:#64748b;
-
-line-height:1.6;
+margin-bottom:10px;
 
 }
