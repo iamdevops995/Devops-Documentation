@@ -1,138 +1,364 @@
-- Loops in ansible is helpful to iterate over items.
-- Loops are helpful if user wants to perform many things in one task, such as create a lot of users, install a lot of packages, or repeat a polling step until a certain result is reached.
-- standard loop with `with_items`.
-- multiple items to iterate with `with_items`.
-- Loop over the collection variables ` with_together:`.
+# Ansible Loops
+
+<div class="page-header">
+  <span class="difficulty-badge intermediate">Intermediate</span>
+  <span class="time-badge"><i class="fas fa-clock"></i> 15 min</span>
+</div>
+
+> Loops in Ansible allow you to repeat tasks for multiple items, reducing code duplication and making playbooks more maintainable.
+
+---
+
+## 📚 What You'll Learn
+
+| Objective | Description |
+|-----------|-------------|
+| 🔁 **Basic Loops** | Iterate over simple lists |
+| 📦 **Complex Items** | Loop with dictionaries |
+| 🔢 **Indexed Loops** | Access item index while looping |
+| 🎲 **Special Loops** | Random choice and until loops |
+
+---
+
+## 🎓 Theory: Loop Types
+
+<div class="concept-box">
+
+**Ansible Loop Keywords:**
+
+| Keyword | Use Case | Example |
+|---------|----------|---------|
+| `loop` | Modern, preferred method | `loop: [a, b, c]` |
+| `with_items` | Legacy, still supported | `with_items: [a, b, c]` |
+| `with_together` | Parallel iteration | Combine two lists |
+| `with_indexed_items` | Access index | Get position in list |
+| `with_random_choice` | Random selection | Pick one randomly |
+
+</div>
+
+---
+
+## 🔧 Practical Examples
+
+### Example 1: Basic Loop - Create Multiple Users
 
 ```yaml
-#!/usr/local/bin/ansible-playbook
-- name: Loops in Ansible Playbook Part I
+---
+- name: Create Multiple Users
   hosts: all
-  remote_user: ec2-user
-  become: 'yes'
-  become_user: root
-
-  vars:
-    alpha: [ 'a', 'b', 'c', 'd' ]
-    numbers:  [ 1, 2, 3, 4 ]
-
+  become: yes
+  
   tasks:
-    # Add Multiple User's in one go
-    - name: add several users in one go
+    - name: Add several users
       user:
         name: "{{ item }}"
         state: present
-        groups: "games"
-      with_items:
-        - testuser1
-        - testuser2
-        - testuser3
-        - testuser4
-        - testuser5
-    
-    - name: add several users
+        groups: "developers"
+      loop:
+        - alice
+        - bob
+        - charlie
+        - david
+```
+
+**Output:**
+```
+TASK [Add several users] ***
+changed: [server1] => (item=alice)
+changed: [server1] => (item=bob)
+changed: [server1] => (item=charlie)
+changed: [server1] => (item=david)
+```
+
+---
+
+### Example 2: Loop with Dictionaries
+
+Create users with specific groups:
+
+```yaml
+---
+- name: Create Users with Different Groups
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: Add users with specific groups
       user:
         name: "{{ item.name }}"
         state: present
         groups: "{{ item.groups }}"
-      with_items:
-        - { name: 'testuser6', groups: 'nobody' }
-        - { name: 'testuser7', groups: 'nobody' }
-        - { name: 'testuser8', groups: 'postfix' }
-        - { name: 'testuser9', groups: 'postfix' }
-    
-    - name: Loop Over Set of Collection variable
-      debug:
-        msg: "{{ item.0 }} and {{ item.1 }}"
-      with_together:
-        - "{{ alpha }}"
-        - "{{ numbers }}"
+        shell: "{{ item.shell | default('/bin/bash') }}"
+      loop:
+        - { name: 'alice', groups: 'developers' }
+        - { name: 'bob', groups: 'developers' }
+        - { name: 'charlie', groups: 'admins' }
+        - { name: 'david', groups: 'devops', shell: '/bin/zsh' }
 ```
 
-- Random choice loops.
-- Do-until Loop -To retry a task until a certain condtion is met.
-- Default value for `retries` is 3 and `delay` is 5.
-- Looping over the list with Index.
+---
+
+### Example 3: Install Multiple Packages
 
 ```yaml
-#!/usr/local/bin/ansible-playbook
-- name: Loops in Ansible Playbook Part II
+---
+- name: Install Development Tools
   hosts: all
-  remote_user: ec2-user
-  become: 'yes'
-  become_user: root
-
+  become: yes
+  
   vars:
-    alpha: [ 'a', 'b', 'c', 'd' ]
-    numbers:  [ 1, 2, 3, 4 ]
-
+    packages:
+      - git
+      - vim
+      - curl
+      - wget
+      - unzip
+      - htop
+  
   tasks:
-    # Add Multiple User's in one go
-    - name : Random Looping Example
-      debug:
-        msg: "{{ item }}"
-      with_random_choice:
-        - "go through the door"
-        - "drink from the goblet"
-        - "press the red button"
-        - "do nothing"
-    
-    # Looping Over A List With An Index
-    - name: Looping over a List
-      debug:
-        msg: "At array position {{ item.0 }} there is a value {{ item.1 }}"
-      with_indexed_items:
-        - "{{ alpha }}"
+    - name: Install multiple packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+```
 
-    # Do Until Loop
-    - name: Ensure Apache is Running
+<div class="success-box">
+
+💡 **Pro Tip:** For package installation, you can also pass the entire list directly:
+
+```yaml
+- name: Install packages (optimized)
+  yum:
+    name: "{{ packages }}"
+    state: present
+```
+
+This is more efficient as it makes a single API call!
+
+</div>
+
+---
+
+### Example 4: Parallel Iteration with `with_together`
+
+Combine two lists element by element:
+
+```yaml
+---
+- name: Parallel Loop Example
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    users: ['alice', 'bob', 'charlie']
+    uids: [1001, 1002, 1003]
+  
+  tasks:
+    - name: Display user with UID
+      debug:
+        msg: "User {{ item.0 }} has UID {{ item.1 }}"
+      with_together:
+        - "{{ users }}"
+        - "{{ uids }}"
+```
+
+**Output:**
+```
+User alice has UID 1001
+User bob has UID 1002
+User charlie has UID 1003
+```
+
+---
+
+### Example 5: Indexed Loop
+
+Access the index position while looping:
+
+```yaml
+---
+- name: Loop with Index
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    servers:
+      - web-server
+      - db-server
+      - cache-server
+  
+  tasks:
+    - name: Display server with position
+      debug:
+        msg: "Position {{ item.0 }}: {{ item.1 }}"
+      with_indexed_items: "{{ servers }}"
+```
+
+**Output:**
+```
+Position 0: web-server
+Position 1: db-server
+Position 2: cache-server
+```
+
+---
+
+### Example 6: Random Choice
+
+Select a random item from a list:
+
+```yaml
+---
+- name: Random Selection
+  hosts: localhost
+  gather_facts: false
+  
+  tasks:
+    - name: Choose random action
+      debug:
+        msg: "Selected action: {{ item }}"
+      with_random_choice:
+        - "Deploy to production"
+        - "Run tests"
+        - "Generate report"
+        - "Send notification"
+```
+
+---
+
+### Example 7: Until Loop (Retry Until Condition)
+
+Retry a task until a condition is met:
+
+```yaml
+---
+- name: Until Loop - Wait for Service
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: Start Apache
       service:
         name: httpd
         state: started
+    
+    - name: Wait for Apache to respond
+      uri:
+        url: http://localhost:80
+        status_code: 200
       register: result
-      until: result.changed == True
+      until: result.status == 200
       retries: 10
-      delay: 4
+      delay: 5
 ```
+
+<div class="concept-box">
+
+**Until Loop Parameters:**
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `retries` | 3 | Number of retry attempts |
+| `delay` | 5 | Seconds between retries |
+| `until` | - | Condition to check |
+
+</div>
+
+---
+
+### Example 8: Loop with Register
+
+Capture output from each iteration:
 
 ```yaml
-#!/usr/local/bin/ansible-playbook
-- name: Loops in Ansible Playbook Part III
-  hosts: all
-  remote_user: ec2-user
-  become: 'yes'
-  become_user: root
-
-  vars:
-    packages: [ 'gettext-devel', 'openssl-devel', 'perl-CPAN', 'perl-devel', 'zlib-devel', 'unzip', 'curl', 'wget' ]
+---
+- name: Loop with Register
+  hosts: localhost
+  gather_facts: false
+  
   tasks:
-    - name: Install Multiple Packages using Loop
-      yum:
-        name: '{{ item }}'
-        state: present
+    - name: Check multiple URLs
+      uri:
+        url: "{{ item }}"
+        status_code: 200
       loop:
-        - gettext-devel
-        - openssl-devel
-        - perl-CPAN
-        - perl-devel
-        - zlib-devel
-        - unzip
-        - curl
-        - wget
-
-    - name: UnInstall Multiple Packages using Index Loop
-      yum:
-        name: '{{ item.1 }}'
-        state: absent
-      with_indexed_items:
-        - "{{ packages }}"
-
-
-    - name: Install Multiple Packages using Index Loop
-      yum:
-        name: '{{ item.0 }}'
-        state: present
-      with_together:
-        - "{{ packages }}"
-
+        - https://google.com
+        - https://github.com
+        - https://ansible.com
+      register: url_checks
+      ignore_errors: yes
+    
+    - name: Display results
+      debug:
+        msg: "{{ item.item }} - Status: {{ item.status | default('FAILED') }}"
+      loop: "{{ url_checks.results }}"
 ```
+
+---
+
+## 📋 Loop Comparison Table
+
+| Loop Type | Syntax | Use Case |
+|-----------|--------|----------|
+| `loop` | `loop: [a, b, c]` | Simple list iteration |
+| `with_items` | `with_items: [a, b, c]` | Legacy, same as loop |
+| `with_together` | `with_together: [list1, list2]` | Parallel iteration |
+| `with_indexed_items` | `with_indexed_items: list` | Need item index |
+| `with_random_choice` | `with_random_choice: list` | Pick random item |
+| `until` | `until: condition` | Retry until success |
+
+---
+
+## 💡 Best Practices
+
+### 1. Use `loop` for New Playbooks
+
+```yaml
+# ✅ Preferred (Ansible 2.5+)
+loop:
+  - item1
+  - item2
+
+# ⚠️ Legacy (still works)
+with_items:
+  - item1
+  - item2
+```
+
+### 2. Use Loop Control for Complex Scenarios
+
+```yaml
+- name: Loop with custom label
+  debug:
+    msg: "Processing {{ item.name }}"
+  loop:
+    - { name: 'alice', role: 'admin' }
+    - { name: 'bob', role: 'user' }
+  loop_control:
+    label: "{{ item.name }}"  # Shows only name in output
+    pause: 1                   # 1 second pause between items
+```
+
+### 3. Flatten Nested Lists
+
+```yaml
+vars:
+  all_packages:
+    - [git, vim]
+    - [curl, wget]
+
+tasks:
+  - name: Install all packages
+    yum:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ all_packages | flatten }}"
+```
+
+---
+
+## 🔗 Next Steps
+
+- [Ansible Conditions](Ansible%20Operators%20%26%20Condition%20statement.md) - Conditional execution
+- [Ansible Handlers](Ansible%20Handler.md) - Trigger on changes
