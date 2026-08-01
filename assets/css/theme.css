@@ -65,7 +65,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--dd-bg);
+  background: #f7f9fc !important;
+  background-image: none !important;
   color: var(--dd-text);
   font-family: var(--base-font-family);
   font-size: 16px;
@@ -96,7 +97,8 @@ input:focus-visible,
 /* ------------------------------------------------------------ content ---- */
 
 .content {
-  background: var(--dd-bg);
+  background: #f7f9fc !important;
+  background-image: none !important;
 }
 
 .markdown-section {
@@ -300,4 +302,41 @@ input:focus-visible,
 .pagination-item-title {
   color: var(--dd-blue-600) !important;
   font-weight: 600;
+}
+
+
+/* ------------------------------------------------ clear theme patterns ---- */
+
+/* Override any background patterns from docsify-themeable */
+body,
+.content,
+.sidebar,
+.sidebar .search,
+.sidebar .search .input-wrap,
+.sidebar .search input,
+.markdown-section,
+.app-nav {
+  background-image: none !important;
+}
+
+/* Ensure solid backgrounds throughout */
+.sidebar .app-name {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.sidebar .sidebar-nav {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.sidebar-footer {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Search keyboard hint */
+.sidebar .search .search-kbd {
+  background: #f1f5f9 !important;
+  background-image: none !important;
 }

@@ -8,7 +8,8 @@
   flex-direction: column;
   width: var(--dd-sidebar-w);
   padding: 0 !important;
-  background: var(--dd-white);
+  background: #ffffff !important;
+  background-image: none !important;
   border-right: 1px solid var(--dd-border);
   overflow: hidden !important;
   z-index: 20;
@@ -83,7 +84,8 @@
   margin: 0;
   padding: 14px 16px;
   border-bottom: 1px solid var(--dd-border);
-  background: var(--dd-bg);
+  background: #f8fafc !important;
+  background-image: none !important;
 }
 
 .sidebar .search .input-wrap {
@@ -113,7 +115,8 @@
   font-family: inherit;
   font-size: .88rem;
   color: var(--dd-text);
-  background: var(--dd-white);
+  background: #ffffff !important;
+  background-image: none !important;
   border: 1px solid var(--dd-border-strong);
   border-radius: var(--dd-r-sm);
   box-shadow: var(--dd-shadow-sm);
