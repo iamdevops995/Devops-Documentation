@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Learn DevOps</title>
+  <meta name="description" content="Create an account to access DevOps Documentation">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Cpath d='M20 20l-9 12 9 12' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 20l9 12-9 12' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M36 16L28 48' fill='none' stroke='%23bfdbfe' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="brand-logo">
+          <i class="fas fa-infinity" aria-hidden="true"></i>
+        </div>
+        <h1>Create Account</h1>
+        <p>Join the DevOps learning community</p>
+      </div>
+
+      <form class="login-form" id="signupForm" autocomplete="on">
+        <div class="error-message" id="errorMessage">
+          <i class="fas fa-exclamation-circle"></i>
+          <span id="errorText">Please fill in all fields correctly.</span>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+          <i class="fas fa-check-circle"></i>
+          <span>Account created! Redirecting to login...</span>
+        </div>
+
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <div class="input-wrapper">
+            <input type="text" id="fullname" name="fullname" class="form-input" 
+              placeholder="John Doe" autocomplete="name" required>
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <input type="email" id="email" name="email" class="form-input" 
+              placeholder="you@example.com" autocomplete="email" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" name="password" class="form-input" 
+              placeholder="Create a strong password" autocomplete="new-password" required minlength="8">
+            <i class="fas fa-lock"></i>
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="password-hint">At least 8 characters</small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" 
+              placeholder="Confirm your password" autocomplete="new-password" required>
+            <i class="fas fa-lock"></i>
+          </div>
+        </div>
+
+        <label class="remember-me terms-checkbox">
+          <input type="checkbox" id="terms" name="terms" required>
+          <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+        </label>
+
+        <button type="submit" class="btn-login" id="signupBtn">
+          <span>Create Account</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <div class="divider"><span>or sign up with</span></div>
+
+        <div class="social-login">
+          <button type="button" class="btn-social github">
+            <i class="fab fa-github"></i><span>GitHub</span>
+          </button>
+          <button type="button" class="btn-social google">
+            <i class="fab fa-google"></i><span>Google</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="signup-link">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <script>
+    (function() {
+      'use strict';
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+
+      function getPreferredTheme() {
+        const saved = localStorage.getItem('theme');
+        if (saved) return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          html.setAttribute('data-theme', 'dark');
+        } else {
+          html.removeAttribute('data-theme');
+        }
+        localStorage.setItem('theme', theme);
+      }
+
+      setTheme(getPreferredTheme());
+      themeToggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+
+      const passwordInput = document.getElementById('password');
+      const passwordToggle = document.getElementById('passwordToggle');
+      passwordToggle.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+      });
+
+      const signupForm = document.getElementById('signupForm');
+      const signupBtn = document.getElementById('signupBtn');
+      const errorMessage = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+      const successMessage = document.getElementById('successMessage');
+
+      signupForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errorMessage.classList.remove('show');
+        successMessage.classList.remove('show');
+
+        const fullname = document.getElementById('fullname').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const terms = document.getElementById('terms').checked;
+
+        if (password !== confirmPassword) {
+          errorText.textContent = 'Passwords do not match.';
+          errorMessage.classList.add('show');
+          return;
+        }
+        if (password.length < 8) {
+          errorText.textContent = 'Password must be at least 8 characters.';
+          errorMessage.classList.add('show');
+          return;
+        }
+        if (!terms) {
+          errorText.textContent = 'Please accept the terms and conditions.';
+          errorMessage.classList.add('show');
+          return;
+        }
+
+        const btnText = signupBtn.innerHTML;
+        signupBtn.innerHTML = '<span class="spinner"></span><span>Creating account...</span>';
+        signupBtn.disabled = true;
+
+        setTimeout(function() {
+          successMessage.classList.add('show');
+          localStorage.setItem('signupEmail', email);
+          localStorage.setItem('signupName', fullname);
+          setTimeout(function() {
+            window.location.href = 'login.html';
+          }, 2000);
+        }, 1500);
+      });
+
+      document.querySelectorAll('.btn-social').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const provider = this.classList.contains('github') ? 'GitHub' : 'Google';
+          alert('OAuth ' + provider + ' signup would be implemented here.');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
