@@ -1,84 +1,376 @@
-#Ansible: Configuration Automation
+# Ansible: Configuration Automation
 
-Terraform -> civil engg(it user create new cloud infra)
-Ansible -> interior designer(installing the tool in existing infra (cloud /on-prem))
-Ansible -> Linux commands ->push mech
-Chef /puppet -> ruby/groovy script ->pull mech
-Salt ->  deployment tool -> both mech
-Ansible is mutable
-Ansible is idempotent
+## What is Ansible?
 
-### Ansible documentation
-**-> Prerequisites
--> Master node(control node) :Python + Ansible (windows will not support)
--> managed node(slave node) :Python (all OS will support)
--> Each and every machine will have pem /ppk key(private key)
+Ansible is an **open-source Configuration Management and Automation tool** used to:
 
-### Connecting Methods Linux/Windows Machines 
-*WIN - WIN -RDC*
-*WIN - LIN -Putty*
-*LIN -LIN -SSH*
-#### Connecting to slave-node machine through Master-Node
+- Configure existing servers (Cloud / On-Premises)
+- Install and manage software packages
+- Automate system administration tasks
+- Deploy applications
+- Manage services
+- Orchestrate multi-server environments
+
+### Key Features
+
+- **Agentless Architecture** (No agent installation required on managed nodes)
+- Uses **SSH** (Linux) and **WinRM** (Windows) for communication
+- Uses **YAML** for writing Playbooks
+- Push-based automation model
+- Simple and easy to learn
+
+---
+
+## Ansible Concepts
+
+### Push-Based Architecture
+
+Ansible follows a **Push Mechanism**, where the Control Node pushes configurations to the Managed Nodes.
+
 ```
-IP : IP Address of Slave Machine
-UserName: User name slave machine
-pem/ppk --> Key pair files
-vi Laptopkey.pem
-chmod 400 Laptopkey.pem
-ssh -i "Laptopkey.pem" UserName@IP
-ssh username@ipaddress -> paygent automated
+Control Node
+      |
+      | SSH / WinRM
+      |
+-----------------------------
+|            |              |
+Server 1   Server 2      Server 3
 ```
 
-### Ansible Topics
-- ADHOC COMMANDS
-- Playbook -> Important in ansible
-- vault
-- roles
-#### Ansible Installation 
-***pip-package manager(in python) for installing ansible
+---
+
+## Mutable Infrastructure
+
+Ansible follows a **Mutable Infrastructure** approach.
+
+It modifies the existing servers by installing packages, updating configurations, restarting services, etc., instead of recreating the infrastructure.
+
+---
+
+## Idempotency
+
+Ansible is **Idempotent**.
+
+Running the same playbook multiple times will always produce the same desired state without making unnecessary changes.
+
+Example:
+
+- Install Apache → Installed once
+- Run again → No changes
+- Run again → Still no changes
+
+---
+
+# Prerequisites
+
+## Control Node (Master Node)
+
+Install:
+
+- Python
+- Ansible
+
+> **Note:** Ansible Control Node is supported only on Linux-based operating systems.
+
+---
+
+## Managed Nodes (Slave Nodes)
+
+Install:
+
+- Python
+- SSH Server (Linux)
+
+Managed Nodes can be:
+
+- Linux
+- Cloud Virtual Machines
+- On-Premises Servers
+
+---
+
+## SSH Key Pair
+
+Each managed machine should have access using an SSH Key Pair.
+
+Files:
+
+- `.pem`
+- `.ppk`
+
+Example:
+
+```bash
+chmod 400 LaptopKey.pem
+
+ssh -i "LaptopKey.pem" username@IP_ADDRESS
 ```
+
+Without key:
+
+```bash
+ssh username@IP_ADDRESS
+```
+
+---
+
+# Connecting to Remote Machines
+
+| Source | Destination | Method |
+|---------|-------------|---------|
+| Linux | Linux | SSH |
+| Windows | Linux | PuTTY |
+| Windows | Windows | Remote Desktop (RDP) |
+
+---
+
+# Ansible Directory Structure
+
+Default files after installation using package manager:
+
+```
+Inventory File:
+/etc/ansible/hosts
+
+Configuration File:
+/etc/ansible/ansible.cfg
+```
+
+Custom inventory example:
+
+```bash
+vi slaves.txt
+```
+
+Add private IPs:
+
+```
+172.31.10.100
+
+172.31.10.101
+
+172.31.10.102
+```
+
+Check installation:
+
+```bash
+ansible --version
+```
+
+---
+
+# Installing Ansible
+
+Using pip:
+
+```bash
 sudo pip install ansible
 ```
 
-```
-inventory file ->/etc/ansible/hosts-> while giving yum/apt
-config file ->/etc/ansible/ansible.cfg-> while giving yum/apt
-inventory file->vi slaves.txt
-config file->wget link
-ansible --version
-vi slaves.txt-> give private ip address
- config file download in google get raw link
-wget link
-```
-**Module used for below Task/cmds.
-1. yum
-2. service
-3. copy
-**States
-- Install -> present
-- Uninstall-> absent
-- Stop-> stopped
-- Start-> started
-- Restart-> restarted
-#### ADHOC Commands For Single Task
-```
-ansible all -i slaves.txt -m ping          # -m module
-ansible all -i slaves.txt -a "uname -a"         # -a Action
-ansible all -i slaves.txt -a "uptime"
-ansible all -i slaves.txt -a "top"
-ansible all -i slaves.txt -m yum -a "name=httpd state=present" -b 
-#  -a arguments with yum it will argument    #  -b sudo
-ansible all -i slaves.txt -m service -a "name=httpd state=started" -b
-# -b => become =>sudo
+Using yum (Amazon Linux / RHEL):
 
- ansible-playbook user.yml --ask-become-pass
+```bash
+sudo yum install ansible -y
 ```
-#### Sample Apache HTTPD configuration using ADHOC 
+
+Using apt (Ubuntu):
+
+```bash
+sudo apt update
+
+sudo apt install ansible -y
 ```
-vi index.html -> content should insert
-ansible all -i slaves.txt -m copy -a "src=MasterNodePath dest=SlaveNodePath" -b
-ansible all -i slaves.txt -m copy -a "src=/home/ec2-user/index.html dest=/var/www/html/index.html mode=777" -b
-ansible all -i slaves.txt -m service -a "name=httpd state=started" -b
-ansible all -i slaves.txt -m service -a "name=httpd state=stopped" -b
-ansible all -i slaves.txt -m service -a "name=httpd state=restarted" -b
+
+Verify installation:
+
+```bash
+ansible --version
+```
+
+---
+
+# Important Ansible Topics
+
+- Inventory
+- Adhoc Commands
+- Playbooks
+- Variables
+- Vault
+- Roles
+
+---
+
+# Commonly Used Modules
+
+| Module | Purpose |
+|---------|----------|
+| ping | Test connectivity |
+| yum | Install packages (RHEL/Amazon Linux) |
+| apt | Install packages (Ubuntu/Debian) |
+| service | Start/Stop services |
+| copy | Copy files |
+| command | Execute commands |
+| shell | Execute shell commands |
+
+---
+
+# Common States
+
+Packages
+
+- present
+- absent
+
+Services
+
+- started
+- stopped
+- restarted
+
+---
+
+# Adhoc Commands
+
+## Ping all servers
+
+```bash
+ansible all -i slaves.txt -m ping
+```
+
+---
+
+## Check OS Information
+
+```bash
+ansible all -i slaves.txt -a "uname -a"
+```
+
+---
+
+## Check Uptime
+
+```bash
+ansible all -i slaves.txt -a "uptime"
+```
+
+---
+
+## Display Running Processes
+
+```bash
+ansible all -i slaves.txt -a "top"
+```
+
+---
+
+## Install Apache HTTPD
+
+```bash
+ansible all -i slaves.txt \
+-m yum \
+-a "name=httpd state=present" \
+-b
+```
+
+`-b` means **Become (sudo privilege)**.
+
+---
+
+## Start Apache Service
+
+```bash
+ansible all -i slaves.txt \
+-m service \
+-a "name=httpd state=started" \
+-b
+```
+
+---
+
+## Stop Apache Service
+
+```bash
+ansible all -i slaves.txt \
+-m service \
+-a "name=httpd state=stopped" \
+-b
+```
+
+---
+
+## Restart Apache Service
+
+```bash
+ansible all -i slaves.txt \
+-m service \
+-a "name=httpd state=restarted" \
+-b
+```
+
+---
+
+# Copy Files to Managed Nodes
+
+Create a sample web page:
+
+```bash
+vi index.html
+```
+
+Copy it to all managed nodes:
+
+```bash
+ansible all \
+-i slaves.txt \
+-m copy \
+-a "src=/home/ec2-user/index.html dest=/var/www/html/index.html mode=0644" \
+-b
+```
+
+---
+
+# Running Playbooks
+
+Execute a playbook:
+
+```bash
+ansible-playbook user.yml
+```
+
+Execute using sudo:
+
+```bash
+ansible-playbook user.yml --ask-become-pass
+```
+
+---
+
+# Frequently Used Options
+
+| Option | Description |
+|---------|-------------|
+| -i | Inventory File |
+| -m | Module |
+| -a | Module Arguments |
+| -b | Become (sudo) |
+| --ask-become-pass | Prompt for sudo password |
+| --version | Show Ansible version |
+
+---
+
+# Workflow
+
+```
+Write Inventory
+        ↓
+Verify Connectivity (ping)
+        ↓
+Run Adhoc Commands
+        ↓
+Create Playbooks
+        ↓
+Execute Playbooks
+        ↓
+Manage Infrastructure
 ```
