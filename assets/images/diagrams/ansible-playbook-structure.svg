@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="taskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="handlerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <filter id="shadow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="700" height="520" fill="#f8fafc" rx="12"/>
+  
+  <!-- Title -->
+  <text x="350" y="35" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#1e293b">Playbook Structure</text>
+  
+  <!-- Main Playbook Container -->
+  <rect x="50" y="55" width="600" height="450" rx="16" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#shadow3)"/>
+  
+  <!-- Playbook Header -->
+  <rect x="50" y="55" width="600" height="50" rx="16" fill="url(#headerGrad)"/>
+  <rect x="50" y="89" width="600" height="16" fill="url(#headerGrad)"/>
+  <text x="80" y="88" font-family="JetBrains Mono, monospace" font-size="14" fill="white">playbook.yml</text>
+  <text x="620" y="88" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">YAML</text>
+  
+  <!-- Play Section -->
+  <rect x="70" y="125" width="560" height="365" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Play Header -->
+  <text x="90" y="155" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">- name:</text>
+  <text x="165" y="155" font-family="JetBrains Mono, monospace" font-size="13" fill="#1e293b" font-weight="600">Configure Web Servers</text>
+  
+  <text x="90" y="178" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">  hosts:</text>
+  <text x="165" y="178" font-family="JetBrains Mono, monospace" font-size="13" fill="#3b82f6">webservers</text>
+  
+  <text x="90" y="201" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">  become:</text>
+  <text x="175" y="201" font-family="JetBrains Mono, monospace" font-size="13" fill="#10b981">yes</text>
+  
+  <!-- Vars Section -->
+  <rect x="90" y="215" width="520" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="110" y="238" font-family="JetBrains Mono, monospace" font-size="12" fill="#1d4ed8" font-weight="600">vars:</text>
+  <text x="120" y="258" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">http_port: 80</text>
+  <text x="260" y="258" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">document_root: /var/www/html</text>
+  
+  <!-- Tasks Section -->
+  <rect x="90" y="290" width="520" height="120" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1"/>
+  <rect x="90" y="290" width="520" height="28" rx="8" fill="url(#taskGrad)"/>
+  <rect x="90" y="306" width="520" height="12" fill="url(#taskGrad)"/>
+  <text x="110" y="310" font-family="JetBrains Mono, monospace" font-size="12" fill="white" font-weight="600">tasks:</text>
+  
+  <!-- Task 1 -->
+  <text x="110" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">- name:</text>
+  <text x="175" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e293b">Install Apache</text>
+  <text x="120" y="363" font-family="JetBrains Mono, monospace" font-size="11" fill="#8b5cf6">apt:</text>
+  <text x="155" y="363" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">name=apache2 state=present</text>
+  
+  <!-- Task 2 -->
+  <text x="110" y="388" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">- name:</text>
+  <text x="175" y="388" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e293b">Start Apache</text>
+  <text x="120" y="406" font-family="JetBrains Mono, monospace" font-size="11" fill="#8b5cf6">service:</text>
+  <text x="180" y="406" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">name=apache2 state=started</text>
+  
+  <!-- Handlers Section -->
+  <rect x="90" y="420" width="520" height="55" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1"/>
+  <rect x="90" y="420" width="520" height="28" rx="8" fill="url(#handlerGrad)"/>
+  <rect x="90" y="436" width="520" height="12" fill="url(#handlerGrad)"/>
+  <text x="110" y="440" font-family="JetBrains Mono, monospace" font-size="12" fill="white" font-weight="600">handlers:</text>
+  <text x="110" y="465" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">- name:</text>
+  <text x="175" y="465" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e293b">Restart Apache</text>
+  
+  <!-- Legend -->
+  <rect x="470" y="130" width="12" height="12" rx="2" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="488" y="141" font-family="Inter, sans-serif" font-size="10" fill="#64748b">Variables</text>
+  
+  <rect x="550" y="130" width="12" height="12" rx="2" fill="#f0fdf4" stroke="#10b981"/>
+  <text x="568" y="141" font-family="Inter, sans-serif" font-size="10" fill="#64748b">Tasks</text>
+</svg>

@@ -51,26 +51,11 @@
 
 ### Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        CONTROL NODE                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
-│  │  Playbooks  │  │  Inventory  │  │   Modules   │              │
-│  │   (.yml)    │  │   (hosts)   │  │  (built-in) │              │
-│  └─────────────┘  └─────────────┘  └─────────────┘              │
-│                           │                                     │
-│                       SSH / WinRM                               │
-└───────────────────────────┼─────────────────────────────────────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-        ▼                   ▼                   ▼
-┌───────────────┐   ┌───────────────┐   ┌───────────────┐
-│  MANAGED NODE │   │  MANAGED NODE │   │  MANAGED NODE │
-│   (Server 1)  │   │   (Server 2)  │   │   (Server 3)  │
-│    Linux/Win  │   │    Linux/Win  │   │    Linux/Win  │
-└───────────────┘   └───────────────┘   └───────────────┘
-```
+![Ansible Architecture](/assets/images/diagrams/ansible-architecture.svg)
+
+### Workflow
+
+![Ansible Workflow](/assets/images/diagrams/ansible-workflow.svg)
 
 ---
 
@@ -239,6 +224,10 @@ ansible webservers -i inventory.ini -m ping
 ## 📝 Playbooks: Deep Dive
 
 ### Playbook Structure
+
+![Playbook Structure](/assets/images/diagrams/ansible-playbook-structure.svg)
+
+**Playbook YAML Format:**
 
 ```yaml
 ---
@@ -509,25 +498,7 @@ ansible-playbook deploy.yml
 
 ### Role Directory Structure
 
-```
-roles/
-└── webserver/
-    ├── defaults/          # Default variables (lowest precedence)
-    │   └── main.yml
-    ├── vars/              # Role variables (higher precedence)
-    │   └── main.yml
-    ├── tasks/             # Task definitions
-    │   └── main.yml
-    ├── handlers/          # Handlers
-    │   └── main.yml
-    ├── templates/         # Jinja2 templates
-    │   └── vhost.conf.j2
-    ├── files/             # Static files
-    │   └── index.html
-    ├── meta/              # Role metadata & dependencies
-    │   └── main.yml
-    └── README.md          # Documentation
-```
+![Ansible Role Structure](/assets/images/diagrams/ansible-role-structure.svg)
 
 ### Lab 7: Create a Reusable Role
 
