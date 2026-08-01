@@ -33,8 +33,22 @@
   function applyTheme(theme) {
     if (theme === DARK) {
       document.documentElement.setAttribute('data-theme', DARK);
+      if (document.body) {
+        document.body.setAttribute('data-theme', DARK);
+      }
     } else {
       document.documentElement.removeAttribute('data-theme');
+      if (document.body) {
+        document.body.removeAttribute('data-theme');
+      }
+    }
+  }
+
+  // Re-apply to body once DOM is ready (for initial page load)
+  function ensureBodyTheme() {
+    var theme = document.documentElement.getAttribute('data-theme');
+    if (theme === DARK && document.body) {
+      document.body.setAttribute('data-theme', DARK);
     }
   }
 
@@ -126,10 +140,12 @@
   // Create toggle button when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      ensureBodyTheme();
       createToggleButton();
       watchSystemTheme();
     });
   } else {
+    ensureBodyTheme();
     createToggleButton();
     watchSystemTheme();
   }
