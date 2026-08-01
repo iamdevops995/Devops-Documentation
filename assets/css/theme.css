@@ -54,6 +54,16 @@
   --base-line-height: 1.7;
   --mono-font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas,
                       'Liberation Mono', Menlo, monospace;
+
+  /* Kill docsify-themeable background patterns */
+  --cover-background-image: none !important;
+  --cover-background-mask-color: transparent !important;
+  --cover-background-mask-opacity: 0 !important;
+  --sidebar-background: #ffffff !important;
+  --sidebar-nav-link-background: transparent !important;
+  --search-background: #f8fafc !important;
+  --base-background-color: #f7f9fc !important;
+  --base-background-image: none !important;
 }
 
 /* --------------------------------------------------------------- base ---- */
@@ -338,5 +348,44 @@ body,
 /* Search keyboard hint */
 .sidebar .search .search-kbd {
   background: #f1f5f9 !important;
+  background-image: none !important;
+}
+
+/* Kill the docsify-themeable cover mask pattern */
+:root {
+  --cover-background-mask-color: none;
+  --cover-background-mask-opacity: 0;
+  --cover-background-mask-visibility: hidden;
+  --cover-background-image: none;
+}
+
+/* Force solid search area background */
+.sidebar > .search,
+.sidebar > .search *,
+.search,
+.search .input-wrap,
+.search input[type="search"],
+.search input[type="text"],
+input.search,
+.sidebar input {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  background-repeat: no-repeat !important;
+}
+
+/* The area behind search */
+.sidebar > div:nth-child(2),
+.sidebar .search {
+  background: #f8fafc !important;
+  background-color: #f8fafc !important;
+  background-image: none !important;
+}
+
+/* Specifically target the input */
+.sidebar .search input,
+.sidebar .search input[type="search"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
 }
