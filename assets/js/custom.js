@@ -61,6 +61,52 @@
     sidebar.appendChild(footer);
   }
 
+  /* -------------------------------------------------- user profile bar ---- */
+
+  function buildUserProfile() {
+    if (document.querySelector('.user-profile-bar')) return;
+
+    var userName = localStorage.getItem('userName') || '';
+    var userEmail = localStorage.getItem('userEmail') || '';
+    var userPhoto = localStorage.getItem('userPhoto') || '';
+    
+    if (!userEmail) return; // Not logged in
+
+    var displayName = userName || userEmail.split('@')[0];
+    var initials = displayName.charAt(0).toUpperCase();
+
+    var profileBar = document.createElement('div');
+    profileBar.className = 'user-profile-bar';
+    
+    var avatarHtml = userPhoto 
+      ? '<img src="' + userPhoto + '" alt="' + displayName + '" class="user-avatar">'
+      : '<div class="user-avatar user-avatar-initials">' + initials + '</div>';
+
+    profileBar.innerHTML = 
+      '<div class="user-profile-content">' +
+        avatarHtml +
+        '<div class="user-info">' +
+          '<span class="user-name">' + displayName + '</span>' +
+          '<span class="user-email">' + userEmail + '</span>' +
+        '</div>' +
+        '<button class="btn-signout" onclick="window.firebaseSignOut ? window.firebaseSignOut() : (localStorage.clear(), location.href=\'login.html\')" title="Sign out">' +
+          '<i class="fas fa-sign-out-alt"></i>' +
+          '<span>Sign Out</span>' +
+        '</button>' +
+      '</div>';
+
+    // Insert at top of sidebar
+    var sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      var searchEl = sidebar.querySelector('.search');
+      if (searchEl) {
+        sidebar.insertBefore(profileBar, searchEl);
+      } else {
+        sidebar.insertBefore(profileBar, sidebar.firstChild);
+      }
+    }
+  }
+
   /* --------------------------------------------------- content tweaks ---- */
 
   function wrapTables() {
@@ -90,6 +136,7 @@
     hook.ready(function () {
       buildOverlay();
       buildSidebarFooter();
+      buildUserProfile();
       wireDrawer();
     });
 
@@ -99,6 +146,7 @@
       document.body.classList.toggle('is-landing', path === '/');
 
       buildSidebarFooter();
+      buildUserProfile();
       wireDrawer();
       wrapTables();
       markExternalLinks();

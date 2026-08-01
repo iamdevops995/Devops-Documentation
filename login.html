@@ -20,6 +20,49 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    
+    // Firebase configuration for devops-learn
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0TbkPAE3T0VepDhsBDLy8F2hczwtcxiM",
+      authDomain: "devops-learn-457f6.firebaseapp.com",
+      projectId: "devops-learn-457f6",
+      storageBucket: "devops-learn-457f6.firebasestorage.app",
+      messagingSenderId: "230651813268",
+      appId: "1:230651813268:web:fb768c71df48734c31c381",
+      measurementId: "G-5EZSYWB24V"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    // Make auth functions globally available
+    window.firebaseAuth = {
+      auth,
+      signInWithPopup,
+      GoogleAuthProvider: googleProvider,
+      signInWithEmailAndPassword,
+      onAuthStateChanged
+    };
+
+    // Check if user is already logged in
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, redirect to main page
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('userName', user.displayName || '');
+        localStorage.setItem('userPhoto', user.photoURL || '');
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+
   <style>
     :root {
       /* Brand Colors */
@@ -799,11 +842,49 @@
         }, 1500);
       });
 
-      // Social login handlers (placeholder)
+      // Social login handlers
       document.querySelectorAll('.btn-social').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', async function() {
           const provider = this.classList.contains('github') ? 'GitHub' : 'Google';
-          alert('OAuth ' + provider + ' login would be implemented here.\n\nThis requires backend integration with ' + provider + ' OAuth.');
+          
+          if (provider === 'Google' && window.firebaseAuth) {
+            try {
+              // Show loading state
+              this.innerHTML = '<span class="spinner"></span><span>Signing in...</span>';
+              this.disabled = true;
+              
+              const { auth, signInWithPopup, GoogleAuthProvider } = window.firebaseAuth;
+              const result = await signInWithPopup(auth, GoogleAuthProvider);
+              
+              // Get user info
+              const user = result.user;
+              
+              // Store user info
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('userEmail', user.email);
+              localStorage.setItem('userName', user.displayName || '');
+              localStorage.setItem('userPhoto', user.photoURL || '');
+              
+              // Show success and redirect
+              successMessage.classList.add('show');
+              successMessage.querySelector('span:last-child').textContent = 'Welcome, ' + (user.displayName || user.email) + '! Redirecting...';
+              
+              setTimeout(function() {
+                window.location.href = 'index.html';
+              }, 1500);
+              
+            } catch (error) {
+              console.error('Google sign-in error:', error);
+              errorMessage.querySelector('span:last-child').textContent = error.message || 'Google sign-in failed. Please try again.';
+              errorMessage.classList.add('show');
+              
+              // Reset button
+              this.innerHTML = '<i class="fab fa-google"></i><span>Google</span>';
+              this.disabled = false;
+            }
+          } else if (provider === 'GitHub') {
+            alert('GitHub OAuth requires additional Firebase setup.\n\nTo enable:\n1. Go to Firebase Console → Authentication → Sign-in method\n2. Enable GitHub provider\n3. Add your GitHub OAuth credentials');
+          }
         });
       });
 

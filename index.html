@@ -12,6 +12,59 @@
   <!-- Inline SVG favicon: no external request, no 404 -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Cpath d='M20 20l-9 12 9 12' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 20l9 12-9 12' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M36 16L28 48' fill='none' stroke='%23bfdbfe' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 
+  <!-- Firebase Auth Protection - Redirect to login if not authenticated -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0TbkPAE3T0VepDhsBDLy8F2hczwtcxiM",
+      authDomain: "devops-learn-457f6.firebaseapp.com",
+      projectId: "devops-learn-457f6",
+      storageBucket: "devops-learn-457f6.firebasestorage.app",
+      messagingSenderId: "230651813268",
+      appId: "1:230651813268:web:fb768c71df48734c31c381",
+      measurementId: "G-5EZSYWB24V"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Check authentication state
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in - show the app and store user info
+        document.body.style.visibility = 'visible';
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('userName', user.displayName || '');
+        localStorage.setItem('userPhoto', user.photoURL || '');
+        
+        // Make signOut available globally
+        window.firebaseSignOut = () => {
+          signOut(auth).then(() => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userPhoto');
+            window.location.href = 'login.html';
+          });
+        };
+      } else {
+        // User is not signed in - redirect to login
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
+
+  <!-- Hide body until auth check completes -->
+  <style>
+    body { visibility: hidden; }
+  </style>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
