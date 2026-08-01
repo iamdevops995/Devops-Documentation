@@ -23,15 +23,114 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
   <!-- Custom styles (responsive.css must stay last) -->
-  <link rel="stylesheet" href="assets/css/theme.css">
-  <link rel="stylesheet" href="assets/css/navbar.css">
-  <link rel="stylesheet" href="assets/css/sidebar.css">
-  <link rel="stylesheet" href="assets/css/hero.css">
-  <link rel="stylesheet" href="assets/css/cards.css">
-  <link rel="stylesheet" href="assets/css/tables.css">
-  <link rel="stylesheet" href="assets/css/code.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/theme.css?v=2">
+  <link rel="stylesheet" href="assets/css/navbar.css?v=2">
+  <link rel="stylesheet" href="assets/css/sidebar.css?v=2">
+  <link rel="stylesheet" href="assets/css/hero.css?v=2">
+  <link rel="stylesheet" href="assets/css/cards.css?v=2">
+  <link rel="stylesheet" href="assets/css/tables.css?v=2">
+  <link rel="stylesheet" href="assets/css/code.css?v=2">
+  <link rel="stylesheet" href="assets/css/custom.css?v=2">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=2">
+
+  <!-- Final overrides - must be last -->
+  <style>
+    /* Search input - FINAL OVERRIDE */
+    .sidebar .search input,
+    .sidebar .search input[type="search"],
+    .sidebar .search input[type="text"],
+    .sidebar input,
+    input.search-input {
+      width: 100% !important;
+      padding: 14px 70px 14px 42px !important;
+      background: #ffffff !important;
+      border: 2px solid #d1d5db !important;
+      border-radius: 12px !important;
+      font-size: 0.9rem !important;
+      color: #1f2937 !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+    
+    .sidebar .search input:focus {
+      border-color: #3b82f6 !important;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.15) !important;
+      outline: none !important;
+    }
+    
+    .sidebar .search {
+      background: #f1f5f9 !important;
+      padding: 16px !important;
+    }
+    
+    /* Dark mode search */
+    [data-theme="dark"] .sidebar .search {
+      background: #0f0f1a !important;
+    }
+    
+    [data-theme="dark"] .sidebar .search input,
+    [data-theme="dark"] .sidebar .search input[type="search"] {
+      background: #1e1e32 !important;
+      border-color: #3d3d5c !important;
+      color: #e4e4ed !important;
+    }
+    
+    [data-theme="dark"] .sidebar .search input:focus {
+      border-color: #3b82f6 !important;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.25) !important;
+    }
+    
+    /* Dark mode content text */
+    [data-theme="dark"] .markdown-section h1,
+    [data-theme="dark"] .markdown-section h2,
+    [data-theme="dark"] .markdown-section h3,
+    [data-theme="dark"] .markdown-section h4 {
+      color: #ffffff !important;
+    }
+    
+    [data-theme="dark"] .markdown-section p,
+    [data-theme="dark"] .markdown-section li {
+      color: #b4b4c7 !important;
+    }
+    
+    [data-theme="dark"] .markdown-section blockquote {
+      background: #1e293b !important;
+      border-left: 4px solid #3b82f6 !important;
+    }
+    
+    [data-theme="dark"] .markdown-section blockquote p {
+      color: #cbd5e1 !important;
+    }
+    
+    [data-theme="dark"] .markdown-section a {
+      color: #60a5fa !important;
+    }
+    
+    /* Dark mode sidebar text */
+    [data-theme="dark"] .sidebar-nav a,
+    [data-theme="dark"] .sidebar-nav .sb-cat {
+      color: #b4b4c7 !important;
+    }
+    
+    [data-theme="dark"] .sidebar-nav > ul > li > a,
+    [data-theme="dark"] .sidebar-nav > ul > li > .sb-cat,
+    [data-theme="dark"] .sidebar-nav > ul > li > p > a,
+    [data-theme="dark"] .sidebar-nav > ul > li > p > .sb-cat {
+      color: #e4e4ed !important;
+    }
+    
+    [data-theme="dark"] .sidebar-nav a.active {
+      background: #1e3a5f !important;
+      color: #60a5fa !important;
+    }
+    
+    [data-theme="dark"] .sidebar-nav a:hover,
+    [data-theme="dark"] .sidebar-nav .sb-cat:hover {
+      background: #252540 !important;
+      color: #60a5fa !important;
+    }
+  </style>
 </head>
 
 <body>
