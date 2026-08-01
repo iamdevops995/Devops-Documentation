@@ -51,11 +51,11 @@
 
 ### Architecture Overview
 
-![Ansible Architecture](/assets/images/diagrams/ansible-architecture.svg)
+![Ansible Architecture](../../assets/images/diagrams/ansible-architecture.svg ':size=100%')
 
 ### Workflow
 
-![Ansible Workflow](/assets/images/diagrams/ansible-workflow.svg)
+![Ansible Workflow](../../assets/images/diagrams/ansible-workflow.svg ':size=100%')
 
 ---
 
@@ -225,7 +225,7 @@ ansible webservers -i inventory.ini -m ping
 
 ### Playbook Structure
 
-![Playbook Structure](/assets/images/diagrams/ansible-playbook-structure.svg)
+![Playbook Structure](../../assets/images/diagrams/ansible-playbook-structure.svg ':size=100%')
 
 **Playbook YAML Format:**
 
@@ -498,7 +498,7 @@ ansible-playbook deploy.yml
 
 ### Role Directory Structure
 
-![Ansible Role Structure](/assets/images/diagrams/ansible-role-structure.svg)
+![Ansible Role Structure](../../assets/images/diagrams/ansible-role-structure.svg ':size=100%')
 
 ### Lab 7: Create a Reusable Role
 

@@ -74,7 +74,7 @@
 
 ## 🏗️ Architecture
 
-![Ansible Architecture](/assets/images/diagrams/ansible-architecture.svg)
+![Ansible Architecture](../assets/images/diagrams/ansible-architecture.svg ':size=100%')
 
 ---
 
