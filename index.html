@@ -81,33 +81,131 @@
       box-shadow: 0 0 0 4px rgba(59,130,246,0.25) !important;
     }
     
-    /* Dark mode content text */
+    /* ============ DARK MODE CONTENT - ALL TEXT ============ */
+    
+    /* Main headings */
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5,
+    [data-theme="dark"] h6,
     [data-theme="dark"] .markdown-section h1,
     [data-theme="dark"] .markdown-section h2,
     [data-theme="dark"] .markdown-section h3,
-    [data-theme="dark"] .markdown-section h4 {
+    [data-theme="dark"] .markdown-section h4,
+    [data-theme="dark"] .markdown-section h5,
+    [data-theme="dark"] .markdown-section h6,
+    [data-theme="dark"] article h1,
+    [data-theme="dark"] article h2,
+    [data-theme="dark"] article h3,
+    [data-theme="dark"] article h4,
+    [data-theme="dark"] .content h1,
+    [data-theme="dark"] .content h2,
+    [data-theme="dark"] .content h3,
+    [data-theme="dark"] .content h4 {
       color: #ffffff !important;
     }
     
+    /* Paragraphs and list items */
+    [data-theme="dark"] p,
+    [data-theme="dark"] li,
     [data-theme="dark"] .markdown-section p,
-    [data-theme="dark"] .markdown-section li {
-      color: #b4b4c7 !important;
+    [data-theme="dark"] .markdown-section li,
+    [data-theme="dark"] .markdown-section,
+    [data-theme="dark"] article p,
+    [data-theme="dark"] article li,
+    [data-theme="dark"] .content p,
+    [data-theme="dark"] .content li {
+      color: #c4c4d4 !important;
     }
     
+    /* Strong/bold text */
+    [data-theme="dark"] strong,
+    [data-theme="dark"] b,
+    [data-theme="dark"] .markdown-section strong,
+    [data-theme="dark"] .markdown-section b {
+      color: #ffffff !important;
+    }
+    
+    /* Links */
+    [data-theme="dark"] a,
+    [data-theme="dark"] .markdown-section a,
+    [data-theme="dark"] article a {
+      color: #60a5fa !important;
+    }
+    
+    [data-theme="dark"] a:hover,
+    [data-theme="dark"] .markdown-section a:hover {
+      color: #93c5fd !important;
+    }
+    
+    /* Blockquotes */
+    [data-theme="dark"] blockquote,
     [data-theme="dark"] .markdown-section blockquote {
       background: #1e293b !important;
       border-left: 4px solid #3b82f6 !important;
+      color: #cbd5e1 !important;
     }
     
+    [data-theme="dark"] blockquote p,
     [data-theme="dark"] .markdown-section blockquote p {
       color: #cbd5e1 !important;
     }
     
-    [data-theme="dark"] .markdown-section a {
+    /* Horizontal rules */
+    [data-theme="dark"] hr,
+    [data-theme="dark"] .markdown-section hr {
+      background: #3d3d5c !important;
+      border-color: #3d3d5c !important;
+    }
+    
+    /* Code inline */
+    [data-theme="dark"] code,
+    [data-theme="dark"] .markdown-section code {
+      background: #252540 !important;
       color: #60a5fa !important;
     }
     
-    /* Dark mode sidebar text */
+    /* Pre/code blocks stay dark */
+    [data-theme="dark"] pre,
+    [data-theme="dark"] .markdown-section pre {
+      background: #0d1117 !important;
+    }
+    
+    [data-theme="dark"] pre code,
+    [data-theme="dark"] .markdown-section pre code {
+      background: transparent !important;
+      color: #c9d1d9 !important;
+    }
+    
+    /* Tables */
+    [data-theme="dark"] table,
+    [data-theme="dark"] .markdown-section table {
+      background: #1a1a2e !important;
+      border-color: #3d3d5c !important;
+    }
+    
+    [data-theme="dark"] th,
+    [data-theme="dark"] .markdown-section th {
+      background: #252540 !important;
+      color: #60a5fa !important;
+      border-color: #3d3d5c !important;
+    }
+    
+    [data-theme="dark"] td,
+    [data-theme="dark"] .markdown-section td {
+      color: #b4b4c7 !important;
+      border-color: #3d3d5c !important;
+    }
+    
+    [data-theme="dark"] tr:nth-child(even),
+    [data-theme="dark"] .markdown-section tr:nth-child(even) {
+      background: #1f1f35 !important;
+    }
+    
+    /* ============ DARK MODE SIDEBAR ============ */
+    
     [data-theme="dark"] .sidebar-nav a,
     [data-theme="dark"] .sidebar-nav .sb-cat {
       color: #b4b4c7 !important;
@@ -129,6 +227,11 @@
     [data-theme="dark"] .sidebar-nav .sb-cat:hover {
       background: #252540 !important;
       color: #60a5fa !important;
+    }
+    
+    /* Sidebar border lines */
+    [data-theme="dark"] .sidebar-nav > ul > li > ul {
+      border-left-color: #3d3d5c !important;
     }
   </style>
 </head>
