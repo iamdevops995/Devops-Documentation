@@ -14,8 +14,9 @@
         msg: "print var1: {{var1}} and var2 {{var2}}"
 ```
 
-![[Pasted image 20250901192704.png]]
-![[Pasted image 20250901192715.png | 400]]
+<img src="/Devops-Documentation/Ansible/Ansible/images/variable-dynamic-1.png" alt="Dynamic Variable Example 1" />
+
+<img src="/Devops-Documentation/Ansible/Ansible/images/variable-dynamic-2.png" alt="Dynamic Variable Example 2" width="400" />
 
 ***Ansible hostname/ inventory hostname***
 

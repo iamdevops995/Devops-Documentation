@@ -1,3 +1,7 @@
+# Deploy Application on Kubernetes with Ansible
+
+## Deploy Playbook
+
 ```yaml
 ---
 #!/usr/local/bin/ansible-playbook
@@ -22,6 +26,8 @@
         state: present
         definition: "{{ lookup('file', '/mnt/d/Projects/ansible_kube/ansible/python.yaml') | from_yaml }}"
 ```
+
+## Kubernetes Deployment Manifest
 
 ```yaml
 apiversion: apps/v1
@@ -48,43 +54,45 @@ spec:
             - containerPort: 5000
 ```
 
-![[Pasted image 20250903162538.png]]
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-deploy-1.png" alt="Kubernetes Deployment Output 1" />
 
-![[Pasted image 20250903162614.png]]
-**Create a service for the application using ansible:**
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-deploy-2.png" alt="Kubernetes Deployment Output 2" />
+
+---
+
+## Create a Service for the Application
 
 ```yaml
 - name: Creating service for the python application
-  hosts: localhost
-  gather_facts: no
-  become: false
-  tasks:
-    - name: Create a Service object from an inline definition
-      k8s:
-        state: present
-        definition:
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: py-service
-            namespace: python-hello
-          spec:
-            selector:
-              app: python-hello
-            ports:
-            - protocol: TCP
-              targetPort: 5000
-              port: 500
+  hosts: localhost
+  gather_facts: no
+  become: false
+  tasks:
+    - name: Create a Service object from an inline definition
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: py-service
+            namespace: python-hello
+          spec:
+            selector:
+              app: python-hello
+            ports:
+            - protocol: TCP
+              targetPort: 5000
+              port: 500
 ```
 
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-service-1.png" alt="Kubernetes Service Output 1" />
 
-![[Pasted image 20250903163448.png]]
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-service-2.png" alt="Kubernetes Service Output 2" />
 
-![[Pasted image 20250903163738.png]]
+---
 
-
-------------------------------------------------
-*Create config using ansible*
+## Create ConfigMap using Ansible
 
 ```yaml
 - name: Creating service for the python application
@@ -108,5 +116,8 @@ spec:
           field_manager: ansible
 ```
 
-![[Pasted image 20250903171415.png]]![[Pasted image 20250903171508.png]]
-![[Pasted image 20250903171554.png | 600]]
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-configmap-1.png" alt="ConfigMap Output 1" />
+
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-configmap-2.png" alt="ConfigMap Output 2" />
+
+<img src="/Devops-Documentation/Ansible/Ansible/images/kube-configmap-3.png" alt="ConfigMap Output 3" width="600" />
