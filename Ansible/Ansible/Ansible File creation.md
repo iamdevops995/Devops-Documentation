@@ -31,14 +31,14 @@
 - Creating symbolic links
 
 **Common States:**
-| State | Purpose |
-|-------|---------|
-| `touch` | Create empty file |
-| `directory` | Create directory |
-| `absent` | Delete file/directory |
-| `link` | Create symbolic link |
-| `hard` | Create hard link |
-| `file` | Ensure file exists (no create) |
+| State       | Purpose                        |
+|-------------|--------------------------------|
+| `touch`     | Create empty file              |
+| `directory` | Create directory               |
+| `absent`    | Delete file/directory          |
+| `link`      | Create symbolic link           |
+| `hard`      | Create hard link               |
+| `file`      | Ensure file exists (no create) |
 
 </div>
 
