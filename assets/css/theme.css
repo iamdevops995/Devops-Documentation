@@ -651,12 +651,14 @@ body,
   color: #fff;
 }
 
-[data-theme="dark"] .tech-card h3 {
-  color: #e4e4ed;
+[data-theme="dark"] .tech-card h3,
+[data-theme="dark"] .markdown-section .tech-card h3 {
+  color: #ffffff !important;
 }
 
-[data-theme="dark"] .tech-card p {
-  color: var(--dd-text-mute);
+[data-theme="dark"] .tech-card p,
+[data-theme="dark"] .markdown-section .tech-card p {
+  color: #b4b4c7 !important;
 }
 
 [data-theme="dark"] .tech-card .card-meta {

@@ -151,3 +151,40 @@
   font-size: .87rem;
   color: var(--dd-text-mute);
 }
+
+
+/* ================================================== DARK MODE CARDS ================================================== */
+
+[data-theme="dark"] .tech-card h3,
+[data-theme="dark"] .tech-grid .tech-card h3,
+[data-theme="dark"] .markdown-section .tech-card h3,
+[data-theme="dark"] .markdown-section .tech-grid .tech-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .tech-card p,
+[data-theme="dark"] .tech-grid .tech-card p,
+[data-theme="dark"] .markdown-section .tech-card p,
+[data-theme="dark"] .markdown-section .tech-grid .tech-card p {
+  color: #a0aec0 !important;
+}
+
+[data-theme="dark"] .path-card .path-body strong,
+[data-theme="dark"] .markdown-section .path-card .path-body strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .path-card .path-body span,
+[data-theme="dark"] .markdown-section .path-card .path-body span {
+  color: #a0aec0 !important;
+}
+
+[data-theme="dark"] .section-head h2,
+[data-theme="dark"] .markdown-section .section-head h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .section-head p,
+[data-theme="dark"] .markdown-section .section-head p {
+  color: #a0aec0 !important;
+}
