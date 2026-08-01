@@ -61,10 +61,15 @@
     sidebar.appendChild(footer);
   }
 
-  /* -------------------------------------------------- user profile bar ---- */
+  /* -------------------------------------------------- user profile in footer ---- */
 
   function buildUserProfile() {
-    if (document.querySelector('.user-profile-bar')) return;
+    // Remove any existing user profile bar at top
+    var existingBar = document.querySelector('.user-profile-bar');
+    if (existingBar) existingBar.remove();
+
+    var footer = document.querySelector('.sidebar-footer');
+    if (!footer || footer.querySelector('.user-profile-footer')) return;
 
     var userName = localStorage.getItem('userName') || '';
     var userEmail = localStorage.getItem('userEmail') || '';
@@ -75,36 +80,23 @@
     var displayName = userName || userEmail.split('@')[0];
     var initials = displayName.charAt(0).toUpperCase();
 
-    var profileBar = document.createElement('div');
-    profileBar.className = 'user-profile-bar';
-    
     var avatarHtml = userPhoto 
-      ? '<img src="' + userPhoto + '" alt="' + displayName + '" class="user-avatar">'
-      : '<div class="user-avatar user-avatar-initials">' + initials + '</div>';
+      ? '<img src="' + userPhoto + '" alt="' + displayName + '" class="user-avatar-small">'
+      : '<div class="user-avatar-small user-avatar-initials">' + initials + '</div>';
 
-    profileBar.innerHTML = 
-      '<div class="user-profile-content">' +
-        avatarHtml +
-        '<div class="user-info">' +
-          '<span class="user-name">' + displayName + '</span>' +
-          '<span class="user-email">' + userEmail + '</span>' +
-        '</div>' +
-        '<button class="btn-signout" onclick="window.firebaseSignOut ? window.firebaseSignOut() : (localStorage.clear(), location.href=\'login.html\')" title="Sign out">' +
-          '<i class="fas fa-sign-out-alt"></i>' +
-          '<span>Sign Out</span>' +
-        '</button>' +
-      '</div>';
+    // Create user profile element for footer
+    var userProfile = document.createElement('div');
+    userProfile.className = 'user-profile-footer';
+    userProfile.innerHTML = 
+      avatarHtml +
+      '<span class="user-name-footer" title="' + userEmail + '">' + displayName + '</span>' +
+      '<button class="btn-signout-small" onclick="window.firebaseSignOut ? window.firebaseSignOut() : (localStorage.clear(), location.href=\'login.html\')" title="Sign out">' +
+        '<i class="fas fa-sign-out-alt"></i>' +
+      '</button>';
 
-    // Insert at top of sidebar
-    var sidebar = document.querySelector('.sidebar');
-    if (sidebar) {
-      var searchEl = sidebar.querySelector('.search');
-      if (searchEl) {
-        sidebar.insertBefore(profileBar, searchEl);
-      } else {
-        sidebar.insertBefore(profileBar, sidebar.firstChild);
-      }
-    }
+    // Replace footer content with user profile
+    footer.innerHTML = '';
+    footer.appendChild(userProfile);
   }
 
   /* --------------------------------------------------- content tweaks ---- */
