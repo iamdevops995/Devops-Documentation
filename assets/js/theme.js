@@ -61,6 +61,9 @@
     applyTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
     updateToggleButton(next);
+    
+    // Dispatch event for other scripts to react to theme change
+    window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: next } }));
   }
 
   /**

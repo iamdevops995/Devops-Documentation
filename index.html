@@ -64,193 +64,19 @@
       padding: 16px !important;
     }
     
-    /* ============ DARK MODE ============ */
-    /* Target both html and body with data-theme for maximum compatibility */
-    
     /* Dark mode search */
     [data-theme="dark"] .sidebar .search,
-    body[data-theme="dark"] .sidebar .search {
+    body[data-theme="dark"] .sidebar .search,
+    html[data-theme="dark"] .sidebar .search {
       background: #0f0f1a !important;
     }
     
     [data-theme="dark"] .sidebar .search input,
-    [data-theme="dark"] .sidebar .search input[type="search"],
     body[data-theme="dark"] .sidebar .search input,
-    body[data-theme="dark"] .sidebar .search input[type="search"] {
+    html[data-theme="dark"] .sidebar .search input {
       background: #1e1e32 !important;
       border-color: #3d3d5c !important;
       color: #e4e4ed !important;
-    }
-    
-    [data-theme="dark"] .sidebar .search input:focus,
-    body[data-theme="dark"] .sidebar .search input:focus {
-      border-color: #3b82f6 !important;
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.25) !important;
-    }
-    
-    /* ============ DARK MODE HEADINGS - WHITE ============ */
-    
-    [data-theme="dark"] h1,
-    [data-theme="dark"] h2,
-    [data-theme="dark"] h3,
-    [data-theme="dark"] h4,
-    [data-theme="dark"] h5,
-    [data-theme="dark"] h6,
-    body[data-theme="dark"] h1,
-    body[data-theme="dark"] h2,
-    body[data-theme="dark"] h3,
-    body[data-theme="dark"] h4,
-    body[data-theme="dark"] h5,
-    body[data-theme="dark"] h6,
-    [data-theme="dark"] .markdown-section h1,
-    [data-theme="dark"] .markdown-section h2,
-    [data-theme="dark"] .markdown-section h3,
-    [data-theme="dark"] .markdown-section h4,
-    body[data-theme="dark"] .markdown-section h1,
-    body[data-theme="dark"] .markdown-section h2,
-    body[data-theme="dark"] .markdown-section h3,
-    body[data-theme="dark"] .markdown-section h4 {
-      color: #ffffff !important;
-    }
-    
-    /* Target heading anchor links */
-    [data-theme="dark"] h1 a,
-    [data-theme="dark"] h2 a,
-    [data-theme="dark"] h3 a,
-    [data-theme="dark"] h4 a,
-    body[data-theme="dark"] h1 a,
-    body[data-theme="dark"] h2 a,
-    body[data-theme="dark"] h3 a,
-    body[data-theme="dark"] h4 a,
-    [data-theme="dark"] .markdown-section h1 a,
-    [data-theme="dark"] .markdown-section h2 a,
-    [data-theme="dark"] .markdown-section h3 a,
-    [data-theme="dark"] .markdown-section h4 a,
-    body[data-theme="dark"] .markdown-section h1 a,
-    body[data-theme="dark"] .markdown-section h2 a,
-    body[data-theme="dark"] .markdown-section h3 a,
-    body[data-theme="dark"] .markdown-section h4 a {
-      color: #ffffff !important;
-    }
-    
-    /* ============ DARK MODE PARAGRAPHS ============ */
-    
-    [data-theme="dark"] p,
-    [data-theme="dark"] li,
-    body[data-theme="dark"] p,
-    body[data-theme="dark"] li,
-    [data-theme="dark"] .markdown-section p,
-    [data-theme="dark"] .markdown-section li,
-    body[data-theme="dark"] .markdown-section p,
-    body[data-theme="dark"] .markdown-section li,
-    [data-theme="dark"] .markdown-section,
-    body[data-theme="dark"] .markdown-section {
-      color: #c4c4d4 !important;
-    }
-    
-    [data-theme="dark"] strong,
-    [data-theme="dark"] b,
-    body[data-theme="dark"] strong,
-    body[data-theme="dark"] b {
-      color: #ffffff !important;
-    }
-    
-    /* ============ DARK MODE LINKS ============ */
-    
-    [data-theme="dark"] .markdown-section a:not(h1 a):not(h2 a):not(h3 a):not(h4 a),
-    body[data-theme="dark"] .markdown-section a:not(h1 a):not(h2 a):not(h3 a):not(h4 a) {
-      color: #60a5fa !important;
-    }
-    
-    /* ============ DARK MODE BLOCKQUOTES ============ */
-    
-    [data-theme="dark"] blockquote,
-    body[data-theme="dark"] blockquote,
-    [data-theme="dark"] .markdown-section blockquote,
-    body[data-theme="dark"] .markdown-section blockquote {
-      background: #1e293b !important;
-      border-left: 4px solid #3b82f6 !important;
-    }
-    
-    [data-theme="dark"] blockquote *,
-    body[data-theme="dark"] blockquote *,
-    [data-theme="dark"] .markdown-section blockquote *,
-    body[data-theme="dark"] .markdown-section blockquote * {
-      color: #cbd5e1 !important;
-    }
-    
-    /* ============ DARK MODE HR ============ */
-    
-    [data-theme="dark"] hr,
-    body[data-theme="dark"] hr {
-      background: #3d3d5c !important;
-      border-color: #3d3d5c !important;
-    }
-    
-    /* ============ DARK MODE CODE ============ */
-    
-    [data-theme="dark"] code:not(pre code),
-    body[data-theme="dark"] code:not(pre code) {
-      background: #252540 !important;
-      color: #60a5fa !important;
-      border-color: #3d3d5c !important;
-    }
-    
-    /* ============ DARK MODE TABLES ============ */
-    
-    [data-theme="dark"] table,
-    body[data-theme="dark"] table {
-      background: #1a1a2e !important;
-    }
-    
-    [data-theme="dark"] th,
-    body[data-theme="dark"] th {
-      background: #252540 !important;
-      color: #60a5fa !important;
-    }
-    
-    [data-theme="dark"] td,
-    body[data-theme="dark"] td {
-      color: #b4b4c7 !important;
-    }
-    
-    /* ============ DARK MODE SIDEBAR NAV ============ */
-    
-    [data-theme="dark"] .sidebar-nav a,
-    [data-theme="dark"] .sidebar-nav .sb-cat,
-    body[data-theme="dark"] .sidebar-nav a,
-    body[data-theme="dark"] .sidebar-nav .sb-cat {
-      color: #b4b4c7 !important;
-    }
-    
-    [data-theme="dark"] .sidebar-nav > ul > li > a,
-    [data-theme="dark"] .sidebar-nav > ul > li > .sb-cat,
-    [data-theme="dark"] .sidebar-nav > ul > li > p > a,
-    [data-theme="dark"] .sidebar-nav > ul > li > p > .sb-cat,
-    body[data-theme="dark"] .sidebar-nav > ul > li > a,
-    body[data-theme="dark"] .sidebar-nav > ul > li > .sb-cat,
-    body[data-theme="dark"] .sidebar-nav > ul > li > p > a,
-    body[data-theme="dark"] .sidebar-nav > ul > li > p > .sb-cat {
-      color: #e4e4ed !important;
-    }
-    
-    [data-theme="dark"] .sidebar-nav a.active,
-    body[data-theme="dark"] .sidebar-nav a.active {
-      background: #1e3a5f !important;
-      color: #60a5fa !important;
-    }
-    
-    [data-theme="dark"] .sidebar-nav a:hover,
-    [data-theme="dark"] .sidebar-nav .sb-cat:hover,
-    body[data-theme="dark"] .sidebar-nav a:hover,
-    body[data-theme="dark"] .sidebar-nav .sb-cat:hover {
-      background: #252540 !important;
-      color: #60a5fa !important;
-    }
-    
-    [data-theme="dark"] .sidebar-nav > ul > li > ul,
-    body[data-theme="dark"] .sidebar-nav > ul > li > ul {
-      border-left-color: #3d3d5c !important;
     }
   </style>
 </head>
@@ -354,6 +180,132 @@ window.$docsify = {
   if (window.mermaid) {
     mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
   }
+</script>
+
+<!-- Dark mode color fix - MUST run after docsify loads -->
+<script>
+(function() {
+  'use strict';
+  
+  function forceDarkModeColors() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                 document.body.getAttribute('data-theme') === 'dark';
+    
+    if (!isDark) {
+      // Remove forced styles when in light mode
+      document.querySelectorAll('[data-dark-styled]').forEach(function(el) {
+        el.removeAttribute('style');
+        el.removeAttribute('data-dark-styled');
+      });
+      return;
+    }
+    
+    // Force heading colors with inline styles (highest specificity)
+    var headings = document.querySelectorAll('.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6, article h1, article h2, article h3, article h4');
+    headings.forEach(function(h) {
+      h.style.setProperty('color', '#ffffff', 'important');
+      h.setAttribute('data-dark-styled', 'true');
+      // Also handle anchor inside heading
+      var anchors = h.querySelectorAll('a');
+      anchors.forEach(function(a) {
+        a.style.setProperty('color', '#ffffff', 'important');
+        a.setAttribute('data-dark-styled', 'true');
+      });
+    });
+    
+    // Force paragraph and list item colors
+    var textElements = document.querySelectorAll('.markdown-section p, .markdown-section li, .markdown-section td, article p, article li');
+    textElements.forEach(function(el) {
+      el.style.setProperty('color', '#c4c4d4', 'important');
+      el.setAttribute('data-dark-styled', 'true');
+    });
+    
+    // Force strong/bold colors
+    var strongElements = document.querySelectorAll('.markdown-section strong, .markdown-section b, article strong, article b');
+    strongElements.forEach(function(el) {
+      el.style.setProperty('color', '#ffffff', 'important');
+      el.setAttribute('data-dark-styled', 'true');
+    });
+    
+    // Force link colors (not headings)
+    var links = document.querySelectorAll('.markdown-section a:not(h1 a):not(h2 a):not(h3 a):not(h4 a), article a:not(h1 a):not(h2 a):not(h3 a):not(h4 a)');
+    links.forEach(function(a) {
+      if (!a.closest('h1') && !a.closest('h2') && !a.closest('h3') && !a.closest('h4')) {
+        a.style.setProperty('color', '#60a5fa', 'important');
+        a.setAttribute('data-dark-styled', 'true');
+      }
+    });
+    
+    // Force blockquote colors
+    var blockquotes = document.querySelectorAll('.markdown-section blockquote, article blockquote');
+    blockquotes.forEach(function(bq) {
+      bq.style.setProperty('background', '#1e293b', 'important');
+      bq.style.setProperty('border-left-color', '#3b82f6', 'important');
+      bq.setAttribute('data-dark-styled', 'true');
+      var bqText = bq.querySelectorAll('p, span, *');
+      bqText.forEach(function(el) {
+        el.style.setProperty('color', '#cbd5e1', 'important');
+        el.setAttribute('data-dark-styled', 'true');
+      });
+    });
+    
+    // Force inline code colors
+    var inlineCode = document.querySelectorAll('.markdown-section code:not(pre code), article code:not(pre code)');
+    inlineCode.forEach(function(c) {
+      c.style.setProperty('background', '#252540', 'important');
+      c.style.setProperty('color', '#60a5fa', 'important');
+      c.setAttribute('data-dark-styled', 'true');
+    });
+    
+    // Force table colors
+    var tables = document.querySelectorAll('.markdown-section table, article table');
+    tables.forEach(function(t) {
+      t.style.setProperty('background', '#1a1a2e', 'important');
+      t.setAttribute('data-dark-styled', 'true');
+    });
+    
+    var ths = document.querySelectorAll('.markdown-section th, article th');
+    ths.forEach(function(th) {
+      th.style.setProperty('background', '#252540', 'important');
+      th.style.setProperty('color', '#60a5fa', 'important');
+      th.setAttribute('data-dark-styled', 'true');
+    });
+  }
+  
+  // Register as docsify plugin - runs after each page render
+  window.$docsify = window.$docsify || {};
+  window.$docsify.plugins = (window.$docsify.plugins || []).concat(function(hook) {
+    hook.doneEach(function() {
+      // Small delay to ensure DOM is fully updated
+      setTimeout(forceDarkModeColors, 50);
+      setTimeout(forceDarkModeColors, 200);
+    });
+  });
+  
+  // Also watch for theme attribute changes
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === 'data-theme') {
+        setTimeout(forceDarkModeColors, 50);
+      }
+    });
+  });
+  
+  // Start observing when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      observer.observe(document.documentElement, { attributes: true });
+      observer.observe(document.body, { attributes: true });
+      forceDarkModeColors();
+    });
+  } else {
+    observer.observe(document.documentElement, { attributes: true });
+    if (document.body) {
+      observer.observe(document.body, { attributes: true });
+    }
+    forceDarkModeColors();
+  }
+})();
 </script>
 
 </body>
