@@ -148,3 +148,35 @@
   text-align: center;
   overflow-x: auto;
 }
+
+
+/* ================================================== DARK MODE CODE ================================================== */
+
+/* In dark mode, code blocks stay dark (they already are) */
+[data-theme="dark"] .markdown-section pre {
+  background: #0d1117;
+  border-color: #30363d;
+}
+
+[data-theme="dark"] .markdown-section pre > code {
+  color: #c9d1d9;
+}
+
+/* Dark mode copy button */
+[data-theme="dark"] .docsify-copy-code-button {
+  background: rgba(255, 255, 255, .08) !important;
+  border-color: rgba(255, 255, 255, .15) !important;
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .docsify-copy-code-button:hover {
+  background: var(--dd-blue-600) !important;
+  border-color: var(--dd-blue-600) !important;
+  color: #fff !important;
+}
+
+/* Mermaid diagrams in dark mode */
+[data-theme="dark"] .mermaid {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}

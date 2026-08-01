@@ -14,7 +14,7 @@
   --dd-navy-800: #1e293b;
   --dd-navy-900: #0f172a;
 
-  /* Neutrals */
+  /* Light mode colors (default) */
   --dd-white:    #ffffff;
   --dd-bg:       #f7f9fc;
   --dd-surface:  #ffffff;
@@ -64,6 +64,33 @@
   --search-background: #f8fafc !important;
   --base-background-color: #f7f9fc !important;
   --base-background-image: none !important;
+}
+
+/* --------------------------------------------------------- dark mode ---- */
+
+[data-theme="dark"] {
+  --dd-white:    #1a1a2e;
+  --dd-bg:       #0f0f1a;
+  --dd-surface:  #1a1a2e;
+  --dd-border:   #2d2d44;
+  --dd-border-strong: #3d3d5c;
+  --dd-text:     #e4e4ed;
+  --dd-text-soft:#b4b4c7;
+  --dd-text-mute:#8888a4;
+
+  --dd-blue-50:  #1e293b;
+  --dd-blue-100: #1e3a5f;
+
+  --dd-shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+  --dd-shadow-md: 0 6px 18px rgba(0, 0, 0, .4);
+  --dd-shadow-lg: 0 18px 45px rgba(0, 0, 0, .5);
+  --dd-shadow-blue: 0 18px 40px rgba(37, 99, 235, .3);
+
+  --sidebar-background: #1a1a2e !important;
+  --search-background: #0f0f1a !important;
+  --base-background-color: #0f0f1a !important;
+
+  color-scheme: dark;
 }
 
 /* --------------------------------------------------------------- base ---- */
@@ -388,4 +415,393 @@ input.search,
   background: #ffffff !important;
   background-color: #ffffff !important;
   background-image: none !important;
+}
+
+
+/* ================================================== DARK MODE STYLES ================================================== */
+
+/* Smooth transition for theme switching */
+body,
+.sidebar,
+.content,
+.markdown-section,
+.app-nav,
+.tech-card,
+.path-card,
+.stat,
+.callout,
+.sidebar .search input,
+.sidebar .app-name,
+.sidebar-footer {
+  transition: background-color .3s var(--dd-ease), 
+              color .3s var(--dd-ease), 
+              border-color .3s var(--dd-ease),
+              box-shadow .3s var(--dd-ease);
+}
+
+/* Dark mode body */
+[data-theme="dark"] body {
+  background: #0f0f1a !important;
+  background-image: none !important;
+  color: var(--dd-text);
+}
+
+[data-theme="dark"] .content {
+  background: #0f0f1a !important;
+  background-image: none !important;
+}
+
+/* Dark mode sidebar */
+[data-theme="dark"] .sidebar {
+  background: #1a1a2e !important;
+  background-image: none !important;
+  border-right-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar .app-name {
+  background: #1a1a2e !important;
+  border-bottom-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar .brand-text strong {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .sidebar .search {
+  background: #0f0f1a !important;
+  background-image: none !important;
+  border-bottom-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar .search input[type='search'] {
+  background: #1a1a2e !important;
+  background-image: none !important;
+  border-color: var(--dd-border);
+  color: var(--dd-text);
+}
+
+[data-theme="dark"] .sidebar .search input[type='search']::placeholder {
+  color: var(--dd-text-mute);
+}
+
+[data-theme="dark"] .sidebar .search .search-kbd {
+  background: #252540 !important;
+  border-color: var(--dd-border);
+  color: var(--dd-text-mute);
+}
+
+[data-theme="dark"] .sidebar .sidebar-nav {
+  background: #1a1a2e !important;
+}
+
+[data-theme="dark"] .sidebar-nav .sb-cat,
+[data-theme="dark"] .sidebar-nav a {
+  color: var(--dd-text-soft);
+}
+
+[data-theme="dark"] .sidebar-nav > ul > li > p > .sb-cat,
+[data-theme="dark"] .sidebar-nav > ul > li > .sb-cat,
+[data-theme="dark"] .sidebar-nav > ul > li > p > a,
+[data-theme="dark"] .sidebar-nav > ul > li > a {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .sidebar-nav .sb-cat:hover,
+[data-theme="dark"] .sidebar-nav a:hover {
+  background: #252540;
+  color: var(--dd-blue-400);
+}
+
+[data-theme="dark"] .sidebar-nav a.active {
+  background: #252540;
+  color: var(--dd-blue-400) !important;
+}
+
+[data-theme="dark"] .sidebar-nav a.active::before {
+  background: var(--dd-blue-400);
+}
+
+[data-theme="dark"] .sidebar-nav > ul > li > ul {
+  border-left-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar-nav > ul > li > ul ul {
+  border-left-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar-footer {
+  background: #1a1a2e !important;
+  border-top-color: var(--dd-border);
+}
+
+/* Dark mode navbar */
+[data-theme="dark"] .app-nav {
+  background: rgba(26, 26, 46, .92);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom-color: var(--dd-border);
+}
+
+[data-theme="dark"] .app-nav li a {
+  color: var(--dd-text-soft);
+}
+
+[data-theme="dark"] .app-nav li a:hover {
+  background: #252540;
+  color: var(--dd-blue-400);
+}
+
+/* Dark mode content */
+[data-theme="dark"] .markdown-section {
+  color: var(--dd-text);
+}
+
+[data-theme="dark"] .markdown-section h1,
+[data-theme="dark"] .markdown-section h2,
+[data-theme="dark"] .markdown-section h3,
+[data-theme="dark"] .markdown-section h4 {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .markdown-section h2 {
+  border-bottom-color: var(--dd-border);
+}
+
+[data-theme="dark"] .markdown-section p,
+[data-theme="dark"] .markdown-section li {
+  color: var(--dd-text-soft);
+}
+
+[data-theme="dark"] .markdown-section strong {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .markdown-section a {
+  color: var(--dd-blue-400);
+}
+
+[data-theme="dark"] .markdown-section a:hover {
+  color: var(--dd-blue-200);
+}
+
+[data-theme="dark"] .markdown-section blockquote {
+  background: #1e293b;
+  border-color: var(--dd-blue-600);
+  color: var(--dd-text-soft);
+}
+
+[data-theme="dark"] .markdown-section hr {
+  background: var(--dd-border);
+}
+
+/* Dark mode inline code */
+[data-theme="dark"] .markdown-section p > code,
+[data-theme="dark"] .markdown-section li > code,
+[data-theme="dark"] .markdown-section td > code {
+  background: #252540;
+  border-color: #3d3d5c;
+  color: var(--dd-blue-400);
+}
+
+/* Dark mode tables */
+[data-theme="dark"] .markdown-section table {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+
+[data-theme="dark"] .markdown-section table thead {
+  background: #252540;
+}
+
+[data-theme="dark"] .markdown-section table th {
+  color: var(--dd-blue-400);
+  border-bottom-color: var(--dd-border);
+}
+
+[data-theme="dark"] .markdown-section table td {
+  border-bottom-color: var(--dd-border);
+  color: var(--dd-text-soft);
+}
+
+[data-theme="dark"] .markdown-section table tbody tr:nth-child(even) {
+  background: #1f1f35;
+}
+
+[data-theme="dark"] .markdown-section table tbody tr:hover {
+  background: #252540;
+}
+
+/* Dark mode cards */
+[data-theme="dark"] .tech-card {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+
+[data-theme="dark"] .tech-card:hover {
+  border-color: var(--dd-blue-400);
+  box-shadow: 0 20px 45px rgba(59, 130, 246, .15);
+}
+
+[data-theme="dark"] .tech-card .icon {
+  background: #252540;
+  color: var(--dd-blue-400);
+}
+
+[data-theme="dark"] .tech-card:hover .icon {
+  background: var(--dd-blue-600);
+  color: #fff;
+}
+
+[data-theme="dark"] .tech-card h3 {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .tech-card p {
+  color: var(--dd-text-mute);
+}
+
+[data-theme="dark"] .tech-card .card-meta {
+  border-top-color: var(--dd-border);
+  color: var(--dd-blue-400);
+}
+
+/* Dark mode path cards */
+[data-theme="dark"] .path-card {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+
+[data-theme="dark"] .path-card:hover {
+  border-color: var(--dd-blue-400);
+}
+
+[data-theme="dark"] .path-card .step {
+  background: var(--dd-blue-600);
+}
+
+[data-theme="dark"] .path-card .path-body strong {
+  color: #e4e4ed;
+}
+
+/* Dark mode stats */
+[data-theme="dark"] .stats {
+  background: linear-gradient(135deg, #1a1a2e, #1d4ed8);
+}
+
+/* Dark mode callout */
+[data-theme="dark"] .callout {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+
+[data-theme="dark"] .callout p {
+  color: #e4e4ed;
+}
+
+[data-theme="dark"] .callout small {
+  color: var(--dd-text-mute);
+}
+
+/* Dark mode pagination */
+[data-theme="dark"] .docsify-pagination-container {
+  border-top-color: var(--dd-border);
+}
+
+[data-theme="dark"] .pagination-item-title {
+  color: var(--dd-blue-400) !important;
+}
+
+/* Dark mode toggle button */
+[data-theme="dark"] .sidebar-toggle {
+  background: #1a1a2e;
+  border-color: var(--dd-border);
+}
+
+[data-theme="dark"] .sidebar-toggle span {
+  background: #e4e4ed !important;
+}
+
+/* Dark mode scrollbar */
+[data-theme="dark"] * {
+  scrollbar-color: #3d3d5c transparent;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background: #3d3d5c;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+  background: #4d4d6c;
+}
+
+/* ------------------------------------------ Theme Toggle Button ------------------------------------------ */
+
+.theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 1px solid var(--dd-border);
+  border-radius: 50%;
+  background: var(--dd-surface);
+  box-shadow: var(--dd-shadow-md);
+  cursor: pointer;
+  transition: transform .2s var(--dd-ease), 
+              background .3s var(--dd-ease),
+              border-color .3s var(--dd-ease),
+              box-shadow .3s var(--dd-ease);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: var(--dd-shadow-lg);
+}
+
+.theme-toggle:active {
+  transform: scale(.95);
+}
+
+.theme-toggle i {
+  font-size: 20px;
+  color: var(--dd-text-soft);
+  transition: color .3s var(--dd-ease), transform .4s var(--dd-ease);
+}
+
+.theme-toggle:hover i {
+  color: var(--dd-blue-600);
+}
+
+/* Sun icon for dark mode (click to go light) */
+[data-theme="dark"] .theme-toggle .fa-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .fa-sun {
+  display: block;
+  color: #fbbf24;
+}
+
+/* Moon icon for light mode (click to go dark) */
+:root:not([data-theme="dark"]) .theme-toggle .fa-sun,
+html:not([data-theme="dark"]) .theme-toggle .fa-sun {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .theme-toggle .fa-moon,
+html:not([data-theme="dark"]) .theme-toggle .fa-moon {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: #252540;
+  border-color: #3d3d5c;
+}
+
+[data-theme="dark"] .theme-toggle:hover i {
+  color: #fbbf24;
 }

@@ -162,7 +162,8 @@
   .app-nav,
   .github-corner,
   .docsify-pagination-container,
-  .docsify-copy-code-button { display: none !important; }
+  .docsify-copy-code-button,
+  .theme-toggle { display: none !important; }
 
   .content { left: 0; padding-top: 0; }
 
@@ -177,4 +178,19 @@
   .markdown-section .hero h1,
   .markdown-section .hero .hero-tagline,
   .markdown-section .hero .hero-sub { color: #000 !important; }
+}
+
+/* ----------------------------------------- theme toggle responsive ---- */
+
+@media screen and (max-width: 768px) {
+  .theme-toggle {
+    bottom: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .theme-toggle i {
+    font-size: 18px;
+  }
 }

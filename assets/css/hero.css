@@ -151,3 +151,20 @@
   color: var(--dd-text-mute);
   font-size: 1rem;
 }
+
+
+/* ================================================== DARK MODE HERO ================================================== */
+
+/* Hero looks great in both modes since it has its own gradient */
+[data-theme="dark"] .hero {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .4);
+}
+
+[data-theme="dark"] .markdown-section .btn-primary {
+  background: #ffffff;
+  color: var(--dd-blue-700);
+}
+
+[data-theme="dark"] .markdown-section .btn-primary:hover {
+  background: #f0f6ff;
+}
