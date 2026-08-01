@@ -22,9 +22,7 @@
 
 ## 🎓 Theory: Why Use Roles?
 
-<div class="concept-box">
-
-**Benefits of Roles:**
+> **Benefits of Roles:**
 
 | Benefit | Description |
 |---------|-------------|
@@ -33,8 +31,6 @@
 | 🤝 **Sharing** | Publish to Ansible Galaxy for community |
 | 📏 **Standardization** | Consistent structure across teams |
 | 🧪 **Testability** | Easier to test individual components |
-
-</div>
 
 ---
 

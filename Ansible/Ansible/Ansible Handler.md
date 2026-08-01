@@ -22,20 +22,16 @@
 
 ## 🎓 Theory: Understanding Handlers
 
-<div class="concept-box">
-
-**What are Handlers?**
-
-Handlers are tasks that only execute when:
-1. They are **notified** by another task
-2. The notifying task made a **change** (status: changed)
-
-**Key Characteristics:**
-- Run only **once** at the end of a play, even if notified multiple times
-- Execute in the **order they are defined**, not the order they are notified
-- Perfect for **service restarts** after configuration changes
-
-</div>
+> **What are Handlers?**
+>
+> Handlers are tasks that only execute when:
+> 1. They are **notified** by another task
+> 2. The notifying task made a **change** (status: changed)
+>
+> **Key Characteristics:**
+> - Run only **once** at the end of a play, even if notified multiple times
+> - Execute in the **order they are defined**, not the order they are notified
+> - Perfect for **service restarts** after configuration changes
 
 ### When to Use Handlers
 
@@ -72,13 +68,7 @@ Handlers are tasks that only execute when:
         state: started
 ```
 
-<div class="success-box">
-
-✅ **How it works:**
-- If Apache is newly installed → Handler runs → Service starts
-- If Apache already installed → Handler does NOT run → No unnecessary restart
-
-</div>
+?> ✅ **How it works:** If Apache is newly installed → Handler runs → Service starts. If Apache already installed → Handler does NOT run → No unnecessary restart.
 
 ---
 
@@ -137,17 +127,13 @@ Sometimes you may want more control than handlers provide. Use `register` with `
       when: httpd_install_status.changed
 ```
 
-<div class="concept-box">
-
-**Handler vs Register+When:**
-
-| Aspect | Handler | Register+When |
-|--------|---------|---------------|
-| Runs at | End of play | Immediately after condition |
-| Multiple notifications | Runs once | Runs each time |
-| Complexity | Simple | More flexible |
-
-</div>
+> **Handler vs Register+When:**
+>
+> | Aspect | Handler | Register+When |
+> |--------|---------|---------------|
+> | Runs at | End of play | Immediately after condition |
+> | Multiple notifications | Runs once | Runs each time |
+> | Complexity | Simple | More flexible |
 
 ---
 

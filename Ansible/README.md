@@ -7,8 +7,6 @@
 
 > **Ansible** is an agentless IT automation engine that automates cloud provisioning, configuration management, application deployment, and many other IT needs.
 
-<div class="concept-box">
-
 **Why Learn Ansible?**
 
 - 🚀 **Simple**: Uses YAML syntax, easy to read and write
@@ -16,8 +14,6 @@
 - 🔄 **Idempotent**: Safe to run multiple times
 - 📦 **Powerful**: 3000+ built-in modules
 - 🌐 **Scalable**: Manage thousands of servers
-
-</div>
 
 ---
 
@@ -58,11 +54,7 @@
 
 ## 🎯 Real-World Projects
 
-<div class="lab-box">
-
-**Hands-on Practice**
-
-</div>
+?> **🔬 Hands-on Practice** - Build real-world projects to solidify your Ansible skills
 
 | Project | What You'll Build | Difficulty |
 |---------|-------------------|------------|

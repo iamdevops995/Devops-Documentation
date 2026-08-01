@@ -22,25 +22,22 @@
 
 ## 🎓 Theory: File Module
 
-<div class="concept-box">
+> **The `file` module manages:**
+> - Creating/deleting files and directories
+> - Setting permissions (mode)
+> - Setting ownership (owner, group)
+> - Creating symbolic links
 
-**The `file` module manages:**
-- Creating/deleting files and directories
-- Setting permissions (mode)
-- Setting ownership (owner, group)
-- Creating symbolic links
+### Common States
 
-**Common States:**
-| State       | Purpose                        |
-|-------------|--------------------------------|
-| `touch`     | Create empty file              |
-| `directory` | Create directory               |
-| `absent`    | Delete file/directory          |
-| `link`      | Create symbolic link           |
-| `hard`      | Create hard link               |
-| `file`      | Ensure file exists (no create) |
-
-</div>
+| State | Purpose |
+|-------|---------|
+| `touch` | Create empty file |
+| `directory` | Create directory |
+| `absent` | Delete file/directory |
+| `link` | Create symbolic link |
+| `hard` | Create hard link |
+| `file` | Ensure file exists (no create) |
 
 ---
 

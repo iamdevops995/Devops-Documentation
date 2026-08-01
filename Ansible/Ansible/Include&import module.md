@@ -22,9 +22,7 @@
 
 ## 🎓 Theory: Include vs Import
 
-<div class="concept-box">
-
-**Key Difference:**
+> **Key Difference:**
 
 | Aspect | `import_*` (Static) | `include_*` (Dynamic) |
 |--------|---------------------|----------------------|
@@ -33,8 +31,6 @@
 | **Loop support** | No | Yes |
 | **Tags** | Applied to all imported tasks | Can be selective |
 | **Use case** | Fixed structure | Dynamic, conditional |
-
-</div>
 
 ### When to Use Each
 
@@ -195,11 +191,7 @@ Run specific tags:
 ansible-playbook site.yml --tags "configure"
 ```
 
-<div class="warning-box">
-
-⚠️ **Limitation:** `import_tasks` cannot be used with loops or most conditionals (conditional is applied to each task inside, not the import itself).
-
-</div>
+!> ⚠️ **Limitation:** `import_tasks` cannot be used with loops or most conditionals (conditional is applied to each task inside, not the import itself).
 
 ---
 

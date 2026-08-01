@@ -22,27 +22,17 @@
 
 ## 🎓 Theory: Understanding Vault
 
-<div class="concept-box">
+> **What is Ansible Vault?**
+>
+> Ansible Vault encrypts sensitive data using **AES256** symmetric encryption (the same standard used by major tech companies like Facebook).
+>
+> **Key Features:**
+> - 🔒 Encrypt entire files or individual variables
+> - 🔑 Password or key-file authentication
+> - 📦 Version control safe (encrypted content can be committed)
+> - 🔄 Seamless integration with playbooks
 
-**What is Ansible Vault?**
-
-Ansible Vault encrypts sensitive data using **AES256** symmetric encryption (the same standard used by major tech companies like Facebook).
-
-**Key Features:**
-- 🔒 Encrypt entire files or individual variables
-- 🔑 Password or key-file authentication
-- 📦 Version control safe (encrypted content can be committed)
-- 🔄 Seamless integration with playbooks
-
-</div>
-
-<div class="warning-box">
-
-⚠️ **Security Best Practice:**
-
-Never store passwords, API keys, private keys, or certificates in plain text files!
-
-</div>
+?> ⚠️ **Security Best Practice:** Never store passwords, API keys, private keys, or certificates in plain text files!
 
 ---
 

@@ -22,9 +22,7 @@
 
 ## 🎓 Theory: Loop Types
 
-<div class="concept-box">
-
-**Ansible Loop Keywords:**
+> **Ansible Loop Keywords:**
 
 | Keyword | Use Case | Example |
 |---------|----------|---------|
@@ -33,8 +31,6 @@
 | `with_together` | Parallel iteration | Combine two lists |
 | `with_indexed_items` | Access index | Get position in list |
 | `with_random_choice` | Random selection | Pick one randomly |
-
-</div>
 
 ---
 
@@ -123,9 +119,7 @@ Create users with specific groups:
       loop: "{{ packages }}"
 ```
 
-<div class="success-box">
-
-💡 **Pro Tip:** For package installation, you can also pass the entire list directly:
+?> 💡 **Pro Tip:** For package installation, you can also pass the entire list directly - this is more efficient as it makes a single API call!
 
 ```yaml
 - name: Install packages (optimized)
@@ -133,10 +127,6 @@ Create users with specific groups:
     name: "{{ packages }}"
     state: present
 ```
-
-This is more efficient as it makes a single API call!
-
-</div>
 
 ---
 
@@ -253,17 +243,13 @@ Retry a task until a condition is met:
       delay: 5
 ```
 
-<div class="concept-box">
-
-**Until Loop Parameters:**
+> **Until Loop Parameters:**
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
 | `retries` | 3 | Number of retry attempts |
 | `delay` | 5 | Seconds between retries |
 | `until` | - | Condition to check |
-
-</div>
 
 ---
 

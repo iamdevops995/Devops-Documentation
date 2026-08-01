@@ -22,16 +22,7 @@
 
 ## 🎓 Overview
 
-<div class="warning-box">
-
-⚠️ **Lost your EC2 PEM key?** Don't panic!
-
-You can recover access by:
-1. Using a helper instance to mount the volume
-2. Injecting a new public key
-3. Reattaching the volume to the original instance
-
-</div>
+!> ⚠️ **Lost your EC2 PEM key?** Don't panic! You can recover access by: 1) Using a helper instance to mount the volume, 2) Injecting a new public key, 3) Reattaching the volume to the original instance
 
 ### Prerequisites
 
@@ -45,11 +36,7 @@ You can recover access by:
 
 ### Step 1: Create a Helper EC2 Instance
 
-<div class="lab-box">
-
-**Create a helper instance with these requirements:**
-
-</div>
+?> **🔬 Lab:** Create a helper instance with the requirements below
 
 | Requirement | Details |
 |-------------|---------|
@@ -69,11 +56,7 @@ chmod 400 ~/helper-key.pem
 
 ### Step 2: Stop the Target EC2 Instance
 
-<div class="warning-box">
-
-⚠️ **STOP, don't terminate!** Terminating will delete your instance and data.
-
-</div>
+!> ⚠️ **STOP, don't terminate!** Terminating will delete your instance and data.
 
 1. Go to **EC2 → Instances**
 2. Select the target instance (lost-key instance)
@@ -91,13 +74,9 @@ chmod 400 ~/helper-key.pem
 4. Confirm detachment
 5. Note the **Volume ID** (e.g., `vol-0abc123def456`)
 
-<div class="concept-box">
-
-**How to identify the root volume:**
-- Check the "Attachment information" column
-- Root volume device is usually `/dev/sda1` or `/dev/xvda`
-
-</div>
+> **How to identify the root volume:**
+> - Check the "Attachment information" column
+> - Root volume device is usually `/dev/sda1` or `/dev/xvda`
 
 ---
 
@@ -141,9 +120,7 @@ df -h /mnt/rescue
 ls -la /mnt/rescue/
 ```
 
-<div class="concept-box">
-
-**Device naming varies by instance type:**
+> **Device naming varies by instance type:**
 
 | Instance Type | Device Name |
 |--------------|-------------|
@@ -151,8 +128,6 @@ ls -la /mnt/rescue/
 | t3, m5 (nitro) | `/dev/nvme1n1p1` |
 
 Use `lsblk` to confirm the actual device name.
-
-</div>
 
 ---
 
@@ -245,11 +220,7 @@ ssh -i helper-key.pem ec2-user@<recovered-instance-ip>
 ssh -i helper-key.pem ubuntu@<recovered-instance-ip>
 ```
 
-<div class="success-box">
-
-✅ **Success!** You should now have SSH access to your recovered instance.
-
-</div>
+?> ✅ **Success!** You should now have SSH access to your recovered instance.
 
 ---
 
@@ -271,17 +242,12 @@ hostname
 
 ## 💡 Prevention Tips
 
-<div class="concept-box">
-
-**Avoid this situation in the future:**
-
-1. **Backup your PEM keys** securely (password manager, encrypted storage)
-2. **Use AWS Systems Manager Session Manager** (no SSH keys needed)
-3. **Use EC2 Instance Connect** for temporary access
-4. **Set up multiple key pairs** per instance
-5. **Use Ansible AWX/Tower** with centralized key management
-
-</div>
+> **Avoid this situation in the future:**
+> 1. **Backup your PEM keys** securely (password manager, encrypted storage)
+> 2. **Use AWS Systems Manager Session Manager** (no SSH keys needed)
+> 3. **Use EC2 Instance Connect** for temporary access
+> 4. **Set up multiple key pairs** per instance
+> 5. **Use Ansible AWX/Tower** with centralized key management
 
 ### Enable Session Manager (Recommended)
 

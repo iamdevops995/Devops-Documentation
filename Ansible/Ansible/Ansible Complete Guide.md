@@ -27,8 +27,6 @@
 
 > **Ansible** is an open-source IT automation engine that automates provisioning, configuration management, application deployment, orchestration, and many other IT processes.
 
-<div class="concept-box">
-
 **Key Characteristics:**
 
 - **Agentless**: No software needs to be installed on managed nodes
@@ -36,8 +34,6 @@
 - **Push-based**: Configurations are pushed from control node to managed nodes
 - **YAML-based**: Human-readable configuration language
 - **Modular**: Extensive library of built-in modules
-
-</div>
 
 ### Why Use Ansible?
 
@@ -63,16 +59,8 @@
 
 ### Lab 1: Install Ansible Control Node
 
-<div class="lab-box">
-
-**Objective:** Set up Ansible on Ubuntu/Amazon Linux
-
-**Prerequisites:**
-- Linux server (Ubuntu 20.04+ or Amazon Linux 2)
-- sudo/root access
-- Python 3.8+
-
-</div>
+?> **🔬 Lab Objective:** Set up Ansible on Ubuntu/Amazon Linux
+<br><br>**Prerequisites:**<br>• Linux server (Ubuntu 20.04+ or Amazon Linux 2)<br>• sudo/root access<br>• Python 3.8+
 
 <!-- tabs:start -->
 
@@ -146,11 +134,7 @@ ansible [core 2.15.0]
 
 ### Lab 2: Configure SSH Key Authentication
 
-<div class="lab-box">
-
-**Objective:** Set up passwordless SSH between control and managed nodes
-
-</div>
+?> **🔬 Lab Objective:** Set up passwordless SSH between control and managed nodes
 
 ```bash
 # Generate SSH key pair (on control node)
@@ -176,11 +160,7 @@ ssh -i ~/mykey.pem ec2-user@<EC2-IP> "hostname"
 
 ### Lab 3: Create Your First Inventory
 
-<div class="lab-box">
-
-**Objective:** Define managed hosts in an inventory file
-
-</div>
+?> **🔬 Lab Objective:** Define managed hosts in an inventory file
 
 **File: `inventory.ini`**
 ```ini
@@ -255,11 +235,7 @@ ansible webservers -i inventory.ini -m ping
 
 ### Lab 4: Write Your First Playbook
 
-<div class="lab-box">
-
-**Objective:** Create a playbook to install and configure Apache web server
-
-</div>
+?> **🔬 Lab Objective:** Create a playbook to install and configure Apache web server
 
 **File: `install-apache.yml`**
 ```yaml
@@ -415,13 +391,7 @@ firewall_rules:
 
 ### Why Vault?
 
-<div class="warning-box">
-
-⚠️ **Never store passwords, API keys, or certificates in plain text!**
-
-Ansible Vault encrypts sensitive data using AES256 encryption.
-
-</div>
+!> ⚠️ **Never store passwords, API keys, or certificates in plain text!** Ansible Vault encrypts sensitive data using AES256 encryption.
 
 
 ### Lab 6: Using Ansible Vault
@@ -933,13 +903,9 @@ ansible-galaxy collection install community.general
 
 ---
 
-<div class="next-steps">
-
 ## 🚀 Next Steps
 
 1. **Practice Labs**: Complete the hands-on exercises above
 2. **Build a Project**: Automate your own server setup
 3. **Learn Roles**: Create reusable automation
 4. **Explore AWX/Tower**: Enterprise Ansible with UI
-
-</div>

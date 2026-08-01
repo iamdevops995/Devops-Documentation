@@ -26,15 +26,11 @@
 
 Manage individual lines in text files - add, modify, or remove specific lines.
 
-<div class="concept-box">
-
-**Use Cases:**
-- Add configuration options to files
-- Modify specific settings
-- Ensure a line exists or is absent
-- Update values matching a pattern
-
-</div>
+> **Use Cases:**
+> - Add configuration options to files
+> - Modify specific settings
+> - Ensure a line exists or is absent
+> - Update values matching a pattern
 
 ### Parameters
 
@@ -146,15 +142,11 @@ Manage individual lines in text files - add, modify, or remove specific lines.
 
 Manage multi-line blocks of text with markers.
 
-<div class="concept-box">
-
-**Use Cases:**
-- Add configuration sections
-- Insert multi-line content
-- Manage blocks that need to stay together
-- Update entire sections atomically
-
-</div>
+> **Use Cases:**
+> - Add configuration sections
+> - Insert multi-line content
+> - Manage blocks that need to stay together
+> - Update entire sections atomically
 
 ### Parameters
 
@@ -239,14 +231,10 @@ Manage multi-line blocks of text with markers.
 
 Safely reboot systems and wait for them to come back online.
 
-<div class="concept-box">
-
-**Use Cases:**
-- Kernel updates requiring restart
-- Configuration changes requiring reboot
-- Maintenance procedures
-
-</div>
+> **Use Cases:**
+> - Kernel updates requiring restart
+> - Configuration changes requiring reboot
+> - Maintenance procedures
 
 ### Parameters
 
@@ -344,14 +332,10 @@ Safely reboot systems and wait for them to come back online.
 
 Clone and manage Git repositories.
 
-<div class="concept-box">
-
-**Use Cases:**
-- Deploy application code
-- Manage configuration repositories
-- Pull updates from remote repositories
-
-</div>
+> **Use Cases:**
+> - Deploy application code
+> - Manage configuration repositories
+> - Pull updates from remote repositories
 
 ### Parameters
 

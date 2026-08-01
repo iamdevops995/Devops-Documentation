@@ -22,16 +22,11 @@
 
 ## 🎓 Prerequisites
 
-<div class="concept-box">
-
-**Before You Begin:**
-
-- Linux system (Ubuntu 20.04+, CentOS 7+, or Amazon Linux 2)
-- `sudo` or root access
-- Python 3.8 or higher installed
-- Internet connection for package downloads
-
-</div>
+> **Before You Begin:**
+> - Linux system (Ubuntu 20.04+, CentOS 7+, or Amazon Linux 2)
+> - `sudo` or root access
+> - Python 3.8 or higher installed
+> - Internet connection for package downloads
 
 ---
 
@@ -39,11 +34,7 @@
 
 ### Method 1: Ubuntu/Debian (APT)
 
-<div class="lab-box">
-
-**Recommended for:** Ubuntu, Debian, Linux Mint
-
-</div>
+?> **Recommended for:** Ubuntu, Debian, Linux Mint
 
 ```bash
 # Update package index
@@ -66,11 +57,7 @@ ansible --version
 
 ### Method 2: RHEL/CentOS/Amazon Linux (YUM)
 
-<div class="lab-box">
-
-**Recommended for:** RHEL, CentOS, Fedora, Amazon Linux
-
-</div>
+?> **Recommended for:** RHEL, CentOS, Fedora, Amazon Linux
 
 ```bash
 # For Amazon Linux 2
@@ -93,11 +80,7 @@ ansible --version
 
 ### Method 3: Python pip with Virtual Environment (Recommended)
 
-<div class="lab-box">
-
-**Recommended for:** Getting the latest version, isolated environment
-
-</div>
+?> **Recommended for:** Getting the latest version, isolated environment
 
 #### Step 1: Verify Python Installation
 
@@ -140,11 +123,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-<div class="warning-box">
-
-⚠️ **Note:** Your prompt will change to `(venv)` indicating the virtual environment is active.
-
-</div>
+!> ⚠️ **Note:** Your prompt will change to `(venv)` indicating the virtual environment is active.
 
 #### Step 4: Install Ansible
 
