@@ -4,7 +4,7 @@
   <div class="hero-inner">
     <div class="hero-left">
       <span class="hero-eyebrow"><i class="fas fa-bolt" aria-hidden="true"></i> Production notes, not theory</span>
-      <h1>DevOps Documentation Portal</h1>
+      <h1>Cloud & DevOps Knowledge Hub</h1>
       <p class="hero-tagline">Cloud · DevOps · Platform Engineering · Automation</p>
       <p class="hero-sub">A working knowledge base for the tools that run production: runbooks, hands-on labs, troubleshooting notes and interview preparation, all in one place.</p>
       <div class="hero-buttons">
