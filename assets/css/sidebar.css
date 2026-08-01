@@ -75,82 +75,95 @@
 
 /* --------------------------------------------------- integrated search ---- */
 
-.sidebar .search {
+.sidebar .search,
+.sidebar > .search {
   order: 2;
   flex: 0 0 auto;
-  /* Long result lists stay reachable instead of being clipped */
   max-height: 70vh;
   overflow-y: auto;
-  margin: 0;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--dd-border);
-  background: #f8fafc !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f1f5f9 !important;
   background-image: none !important;
 }
 
-.sidebar .search .input-wrap {
+.sidebar .search .input-wrap,
+.sidebar .search > .input-wrap {
   position: relative;
   display: block;
-  margin: 0;
-  background: transparent;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
 }
 
 .sidebar .search .input-wrap::before {
-  content: '\f002'; /* magnifying glass */
+  content: '\f002';
   font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free', sans-serif;
   font-weight: 900;
   position: absolute;
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  font-size: 13px;
-  color: var(--dd-text-mute);
+  font-size: 14px;
+  color: #9ca3af;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
-.sidebar .search input[type='search'] {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 60px 12px 38px;
-  font-family: inherit;
-  font-size: .88rem;
-  color: var(--dd-text);
+/* Target ALL possible search input selectors */
+.sidebar .search input,
+.sidebar .search input[type='search'],
+.sidebar .search input[type='text'],
+.sidebar .search .input-wrap input,
+.sidebar input.search-input,
+.search input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 14px 70px 14px 42px !important;
+  margin: 0 !important;
+  font-family: inherit !important;
+  font-size: .9rem !important;
+  color: #1f2937 !important;
   background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  border: 2px solid var(--dd-border);
-  border-radius: 10px;
-  box-shadow: var(--dd-shadow-sm);
-  transition: border-color .18s var(--dd-ease), box-shadow .18s var(--dd-ease);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  border: 2px solid #d1d5db !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08) !important;
+  outline: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease !important;
 }
 
+.sidebar .search input::placeholder,
 .sidebar .search input[type='search']::placeholder {
-  color: var(--dd-text-mute);
+  color: #9ca3af !important;
 }
 
+.sidebar .search input:focus,
 .sidebar .search input[type='search']:focus {
-  outline: none;
-  border-color: var(--dd-blue-500);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, .15);
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, .15) !important;
 }
 
 /* Keyboard hint badge */
 .sidebar .search .search-kbd {
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 14px;
   transform: translateY(-50%);
-  padding: 4px 8px;
-  font-size: .7rem;
+  padding: 5px 10px;
+  font-size: .72rem;
   font-weight: 600;
-  color: var(--dd-text-mute);
-  background: #f1f5f9;
-  border: 1px solid var(--dd-border);
+  color: #6b7280;
+  background: #f3f4f6 !important;
+  border: 1px solid #d1d5db;
   border-radius: 6px;
   pointer-events: none;
+  z-index: 2;
 }
 
 .sidebar .search input[type='search']:not(:placeholder-shown) ~ .search-kbd {
