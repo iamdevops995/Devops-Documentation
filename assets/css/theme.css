@@ -474,20 +474,25 @@ body,
 }
 
 [data-theme="dark"] .sidebar .search input[type='search'] {
-  background: #1a1a2e !important;
+  background: #252540 !important;
   background-image: none !important;
-  border-color: var(--dd-border);
-  color: var(--dd-text);
+  border-color: #3d3d5c;
+  color: #e4e4ed;
 }
 
 [data-theme="dark"] .sidebar .search input[type='search']::placeholder {
-  color: var(--dd-text-mute);
+  color: #8888a4;
+}
+
+[data-theme="dark"] .sidebar .search input[type='search']:focus {
+  border-color: var(--dd-blue-500);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, .2);
 }
 
 [data-theme="dark"] .sidebar .search .search-kbd {
-  background: #252540 !important;
-  border-color: var(--dd-border);
-  color: var(--dd-text-mute);
+  background: #1a1a2e !important;
+  border-color: #3d3d5c;
+  color: #8888a4;
 }
 
 [data-theme="dark"] .sidebar .sidebar-nav {
@@ -496,7 +501,7 @@ body,
 
 [data-theme="dark"] .sidebar-nav .sb-cat,
 [data-theme="dark"] .sidebar-nav a {
-  color: var(--dd-text-soft);
+  color: #b4b4c7;
 }
 
 [data-theme="dark"] .sidebar-nav > ul > li > p > .sb-cat,
@@ -506,6 +511,19 @@ body,
   color: #e4e4ed;
 }
 
+[data-theme="dark"] .sidebar-nav > ul > li > ul {
+  border-left-color: #3d3d5c;
+}
+
+[data-theme="dark"] .sidebar-nav > ul > li > ul ul {
+  border-left-color: #3d3d5c;
+}
+
+[data-theme="dark"] .sidebar-nav > ul > li > ul .sb-cat,
+[data-theme="dark"] .sidebar-nav > ul > li > ul a {
+  color: #8888a4;
+}
+
 [data-theme="dark"] .sidebar-nav .sb-cat:hover,
 [data-theme="dark"] .sidebar-nav a:hover {
   background: #252540;
@@ -513,20 +531,18 @@ body,
 }
 
 [data-theme="dark"] .sidebar-nav a.active {
-  background: #252540;
-  color: var(--dd-blue-400) !important;
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
 }
 
 [data-theme="dark"] .sidebar-nav a.active::before {
   background: var(--dd-blue-400);
 }
 
-[data-theme="dark"] .sidebar-nav > ul > li > ul {
-  border-left-color: var(--dd-border);
-}
-
-[data-theme="dark"] .sidebar-nav > ul > li > ul ul {
-  border-left-color: var(--dd-border);
+[data-theme="dark"] .sidebar-nav > ul > li.folder.open:not(.collapse) > p > .sb-cat,
+[data-theme="dark"] .sidebar-nav > ul > li.folder.open:not(.collapse) > .sb-cat {
+  color: var(--dd-blue-400);
+  background: #252540;
 }
 
 [data-theme="dark"] .sidebar-footer {

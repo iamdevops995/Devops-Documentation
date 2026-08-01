@@ -101,26 +101,30 @@
   font-weight: 900;
   position: absolute;
   top: 50%;
-  left: 13px;
+  left: 14px;
   transform: translateY(-50%);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--dd-text-mute);
   pointer-events: none;
+  z-index: 1;
 }
 
 .sidebar .search input[type='search'] {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px 58px 10px 34px;
+  padding: 12px 60px 12px 38px;
   font-family: inherit;
   font-size: .88rem;
   color: var(--dd-text);
   background: #ffffff !important;
   background-image: none !important;
-  border: 1px solid var(--dd-border-strong);
-  border-radius: var(--dd-r-sm);
+  border: 2px solid var(--dd-border);
+  border-radius: 10px;
   box-shadow: var(--dd-shadow-sm);
   transition: border-color .18s var(--dd-ease), box-shadow .18s var(--dd-ease);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .sidebar .search input[type='search']::placeholder {
@@ -129,23 +133,23 @@
 
 .sidebar .search input[type='search']:focus {
   outline: none;
-  border-color: var(--dd-blue-400);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, .18);
+  border-color: var(--dd-blue-500);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, .15);
 }
 
 /* Keyboard hint badge */
 .sidebar .search .search-kbd {
   position: absolute;
   top: 50%;
-  right: 9px;
+  right: 12px;
   transform: translateY(-50%);
-  padding: 2px 7px;
+  padding: 4px 8px;
   font-size: .7rem;
   font-weight: 600;
   color: var(--dd-text-mute);
-  background: var(--dd-bg);
-  border: 1px solid var(--dd-border-strong);
-  border-radius: 5px;
+  background: #f1f5f9;
+  border: 1px solid var(--dd-border);
+  border-radius: 6px;
   pointer-events: none;
 }
 
@@ -229,12 +233,12 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  padding: 9px 30px 9px 12px;
-  border-radius: var(--dd-r-sm);
-  font-size: .885rem;
+  padding: 10px 32px 10px 14px;
+  border-radius: 8px;
+  font-size: .88rem;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--dd-text-soft);
+  color: #374151;
   text-decoration: none;
   border-bottom: none;
   overflow: hidden;
@@ -250,8 +254,8 @@
 
 .sidebar-nav .sb-cat:hover,
 .sidebar-nav a:hover {
-  background: var(--dd-blue-50);
-  color: var(--dd-blue-700);
+  background: #eff6ff;
+  color: var(--dd-blue-600);
 }
 
 /* Top-level categories */
@@ -259,39 +263,45 @@
 .sidebar-nav > ul > li > .sb-cat,
 .sidebar-nav > ul > li > p > a,
 .sidebar-nav > ul > li > a {
-  font-size: .875rem;
-  font-weight: 650;
+  font-size: .9rem;
+  font-weight: 600;
   letter-spacing: -.005em;
-  color: var(--dd-navy-900);
+  color: #1f2937;
 }
 
 /* Nested groups get a guide rail */
 .sidebar-nav > ul > li > ul {
-  margin: 2px 0 8px 18px;
-  padding-left: 12px;
-  border-left: 1px solid var(--dd-border);
+  margin: 4px 0 10px 20px;
+  padding-left: 14px;
+  border-left: 2px solid #e5e7eb;
 }
 
 .sidebar-nav > ul > li > ul .sb-cat,
 .sidebar-nav > ul > li > ul a {
-  padding: 7px 26px 7px 10px;
-  font-size: .845rem;
-  font-weight: 450;
-  color: var(--dd-text-mute);
+  padding: 8px 28px 8px 12px;
+  font-size: .85rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.sidebar-nav > ul > li > ul .sb-cat:hover,
+.sidebar-nav > ul > li > ul a:hover {
+  color: var(--dd-blue-600);
+  background: #eff6ff;
 }
 
 /* Third level */
 .sidebar-nav > ul > li > ul ul {
-  margin: 2px 0 6px 8px;
-  padding-left: 10px;
-  border-left: 1px dashed var(--dd-border);
+  margin: 4px 0 8px 10px;
+  padding-left: 12px;
+  border-left: 2px dashed #e5e7eb;
 }
 
 .sidebar-nav > ul > li > ul ul .sb-cat,
 .sidebar-nav > ul > li > ul ul a {
-  font-size: .825rem;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  font-size: .83rem;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 /* ------------------------------------------------------------- icons ---- */
@@ -348,19 +358,20 @@
 /* --------------------------------------------------- active highlight ---- */
 
 .sidebar-nav a.active {
-  background: var(--dd-blue-50);
+  background: #dbeafe !important;
   color: var(--dd-blue-700) !important;
-  font-weight: 650;
+  font-weight: 600;
+  position: relative;
 }
 
 .sidebar-nav a.active::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 5px;
-  bottom: 5px;
-  width: 3px;
-  border-radius: 0 3px 3px 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
   background: var(--dd-blue-600);
 }
 
@@ -373,7 +384,7 @@
 .sidebar-nav > ul > li.folder.open:not(.collapse) > p > .sb-cat,
 .sidebar-nav > ul > li.folder.open:not(.collapse) > .sb-cat {
   color: var(--dd-blue-700);
-  background: var(--dd-blue-50);
+  background: #eff6ff;
 }
 
 /* ------------------------------------------------- page table of contents -- */
