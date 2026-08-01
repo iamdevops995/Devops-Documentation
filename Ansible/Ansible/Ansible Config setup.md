@@ -11,15 +11,15 @@
 
 **Create ansible config as env:**
 
-![Ansible Config as Environment Variable](/Ansible/Ansible/images/Pasted%20image%2020250820094321.png)
+![Ansible Config as Environment Variable](images/ansible-config-env.png)
 
 **Create ansible on current directory:**
 
-![Ansible Config in Current Directory](/Ansible/Ansible/images/Pasted%20image%2020250820094547.png)
+![Ansible Config in Current Directory](images/ansible-config-current-dir.png)
 
 **Create ansible config file on user home directory:**
 
-![Ansible Config in Home Directory](/Ansible/Ansible/images/Pasted%20image%2020250820094836.png)
+![Ansible Config in Home Directory](images/ansible-config-home-dir.png)
 
 ```bash
 ANSIBLE_KEEP_REMOTE_FILE=1 ansible-playbook lineinfile.yaml
