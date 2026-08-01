@@ -182,19 +182,53 @@
 
   * [Overview](/Ansible/README.md)
 
-  * [Inventory](/Ansible/README.md#inventory)
+  * <span class="sb-cat">Getting Started</span>
+
+    * [Installation](/Ansible/Ansible/Ansible%20Installations.md)
+
+    * [Config Setup](/Ansible/Ansible/Ansible%20Config%20setup.md)
+
+    * [Ansible Doc](/Ansible/Ansible/Ansible%20Doc.md)
 
   * <span class="sb-cat">Playbooks</span>
 
-    * [Tasks](/Ansible/README.md#tasks)
+    * [Playbook Introduction](/Ansible/Ansible/playbook/Playbook-intro.md)
 
-    * [Handlers](/Ansible/README.md#handlers)
+    * [Playbooks](/Ansible/Ansible/Playbooks.md)
 
-    * [Templates](/Ansible/README.md#templates)
+    * [Variables](/Ansible/Ansible/playbook/Variables.md)
 
-  * [Roles](/Ansible/README.md#roles)
+    * [Handlers](/Ansible/Ansible/Ansible%20Handler.md)
 
-  * [Vault](/Ansible/README.md#vault)
+    * [Loops](/Ansible/Ansible/Ansible%20Loop.md)
+
+    * [Operators & Conditions](/Ansible/Ansible/Ansible%20Operators%20%26%20Condition%20statement.md)
+
+    * [Include & Import](/Ansible/Ansible/Include%26import%20module.md)
+
+    * [Debug & Logging](/Ansible/Ansible/playbook/Ansible%20Logging%20-%20debug%20playbook.md)
+
+    * [Local Action](/Ansible/Ansible/playbook/local%20action.md)
+
+  * <span class="sb-cat">File Operations</span>
+
+    * [File Creation](/Ansible/Ansible/Ansible%20File%20creation.md)
+
+  * <span class="sb-cat">Advanced Topics</span>
+
+    * [Roles](/Ansible/Ansible/Ansible%20Roles.md)
+
+    * [Vault](/Ansible/Ansible/Ansible%20Vault.md)
+
+    * [Practical Playbooks](/Ansible/Ansible/Practical%20ansible%20playbook.md)
+
+  * <span class="sb-cat">Kubernetes Integration</span>
+
+    * [Deploy App with Ansible](/Ansible/Ansible/Ansible_kube/Deploy%20App.md)
+
+  * <span class="sb-cat">Troubleshooting</span>
+
+    * [EC2 PEM Lost](/Ansible/Ansible/ec2%20Pem%20Lost.md)
 
 * <span class="sb-cat"><i class="fab fa-jenkins sb-ico"></i> Jenkins</span>
 
