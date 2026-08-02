@@ -158,24 +158,25 @@ body::before {
 
 .password-toggle {
   position: absolute;
-  right: 14px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: var(--dd-bg);
   border: none;
-  padding: 4px;
+  padding: 8px 10px;
   cursor: pointer;
   color: var(--dd-text-mute);
   font-size: 16px;
   transition: color .2s var(--dd-ease);
   z-index: 2;
+  border-radius: var(--dd-r-sm);
 }
 
 .password-toggle:hover { color: var(--dd-blue-500); }
 
 /* Password input needs extra right padding for toggle button */
 #password, #confirmPassword, input[type="password"] {
-  padding-right: 46px !important;
+  padding-right: 50px !important;
 }
 
 .password-hint {
