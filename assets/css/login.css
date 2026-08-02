@@ -146,13 +146,19 @@ body::before {
   transition: border-color .2s var(--dd-ease), box-shadow .2s var(--dd-ease), background-color .3s var(--dd-ease);
 }
 
+/* Extra right padding for password fields with toggle button */
+.form-input[type="password"],
+.input-wrapper:has(.password-toggle) .form-input {
+  padding-right: 48px;
+}
+
 .form-input::placeholder { color: var(--dd-text-mute); }
 .form-input:focus { border-color: var(--dd-blue-500); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
 .form-input:focus + i, .input-wrapper:focus-within i { color: var(--dd-blue-500); }
 
 .password-toggle {
   position: absolute;
-  right: 16px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -162,9 +168,15 @@ body::before {
   color: var(--dd-text-mute);
   font-size: 16px;
   transition: color .2s var(--dd-ease);
+  z-index: 2;
 }
 
 .password-toggle:hover { color: var(--dd-blue-500); }
+
+/* Password input needs extra right padding for toggle button */
+#password, #confirmPassword, input[type="password"] {
+  padding-right: 46px !important;
+}
 
 .password-hint {
   font-size: 0.8rem;

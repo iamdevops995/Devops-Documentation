@@ -250,13 +250,37 @@
 
   * [Overview](/Git/README.md)
 
-  * [Branching](/Git/README.md#branching)
+  * <span class="sb-cat">Git Basics</span>
 
-  * [Merging and Rebasing](/Git/README.md#merging-and-rebasing)
+    * [Branching](/Git/README.md#branching)
 
-  * [Undo and Recovery](/Git/README.md#undo-and-recovery)
+    * [Merging and Rebasing](/Git/README.md#merging-and-rebasing)
 
-  * [Hooks](/Git/README.md#hooks)
+    * [Undo and Recovery](/Git/README.md#undo-and-recovery)
+
+    * [Hooks](/Git/README.md#hooks)
+
+  * <span class="sb-cat">Git Commands</span>
+
+    * [Git Stash](/Git/Git/Git%20stash.md)
+
+    * [Git Squashing](/Git/Git/Git%20Squashing.md)
+
+    * [Git Aliases](/Git/Git/Git%20Aliases.md)
+
+    * [Author Rewrite](/Git/Author-rewrite.md)
+
+  * <span class="sb-cat">GitHub Actions</span>
+
+    * [Actions Introduction](/Git/Git/Github%20actions/GitHub%20Actions%20Intro.md)
+
+    * [Configure Workflows](/Git/Git/Github%20actions/Configure%20Actions%20Workflow.md)
+
+    * [Custom Actions](/Git/Git/Github%20actions/Custom%20action.md)
+
+    * [Vault Integration](/Git/Git/Github%20actions/vault%20intigrations.md)
+
+    * [Practice Questions](/Git/Git/Github%20actions/Untitled%201.md)
 
 * <span class="sb-cat"><i class="fas fa-terminal sb-ico"></i> PowerShell</span>
 
