@@ -1,90 +1,79 @@
----
-title: Fix Git Commit Author After Pushing to GitHub
-description: Learn how to change Git commit author information after commits have been pushed to GitHub using git commit --amend, git rebase, and git filter-repo.
-tags:
-  - Git
-  - GitHub
-  - Version Control
-  - DevOps
-  - Troubleshooting
----
+# Fix Git Commit Author
 
-# Fix Git Commit Author After Pushing to GitHub
+<div class="page-header">
+  <span class="difficulty-badge intermediate">Intermediate</span>
+  <span class="time-badge"><i class="fas fa-clock"></i> 15 min</span>
+</div>
 
-Sometimes you may notice that your GitHub commits show an incorrect author name, even though you pushed them using your own GitHub account.
-
-For example:
-
-```
-Move user profile to bottom footer
-
-Author:
-Vibilesh
-```
-
-Instead of:
-
-```
-Logesh Kumar
-```
-
-This guide explains why it happens and how to fix it.
+> Learn how to change Git commit author information after commits have been pushed to GitHub.
 
 ---
 
-# Why does this happen?
+## 📚 What You'll Learn
+
+| Objective | Description |
+|:----------|:------------|
+| 🔍 **Understand the Issue** | Why commits show wrong author |
+| ✏️ **Fix Last Commit** | Amend single commit author |
+| 🔄 **Fix Multiple Commits** | Interactive rebase for recent commits |
+| 🗄️ **Fix Entire Repository** | Using git-filter-repo for bulk changes |
+| 🚀 **Push Changes** | Force push rewritten history safely |
+
+---
+
+## 🎓 Prerequisites
+
+Before you begin, ensure you have:
+
+- Git installed on your system
+- Access to the repository you want to modify
+- Python/pip installed (for git-filter-repo method)
+
+!> ⚠️ **Warning:** Rewriting Git history affects all collaborators. Coordinate with your team before force pushing.
+
+---
+
+## ❓ Why Does This Happen?
 
 Git stores **three different pieces of information**:
 
 | Item | Used For |
-|-------|----------|
-| GitHub Account | Authentication (Push/Pull) |
-| Git Username (`user.name`) | Commit Author Name |
-| Git Email (`user.email`) | Commit Author Email |
+|:-----|:---------|
+| **GitHub Account** | Authentication (Push/Pull) |
+| **Git Username** (`user.name`) | Commit Author Name |
+| **Git Email** (`user.email`) | Commit Author Email |
 
-When you push to GitHub, authentication is performed using:
+When you push to GitHub, authentication uses your PAT, SSH key, or credential manager. However, the **commit author** comes from your local Git configuration.
 
-- Personal Access Token (PAT)
-- SSH Key
-- Git Credential Manager
+**Example Problem:**
 
-However, the **commit author** comes from your local Git configuration.
-
-Example:
-
-```bash
-git config --global user.name
-git config --global user.email
+```
+Commit: Move user profile to bottom footer
+Author: Vibilesh <vibilesh@example.com>   ← Wrong!
+Expected: Logesh Kumar <iamdevops995@gmail.com>
 ```
 
-Output:
-
-```text
-Vibilesh
-Vibilesh@example.com
-```
-
-Every commit created with this configuration will use that author.
+?> The commit author is set at commit time, not push time.
 
 ---
 
-# Check Current Git Configuration
+## 🔍 Check Current Git Configuration
 
-Global configuration:
+**Global configuration:**
 
 ```bash
 git config --global user.name
 git config --global user.email
 ```
 
-Repository-specific configuration:
+**Repository-specific configuration:**
 
 ```bash
 git config --local user.name
 git config --local user.email
 ```
 
-View everything:
+**View all configurations with source:**
 
 ```bash
 git config --list --show-origin
@@ -92,44 +81,40 @@ git config --list --show-origin
 
 ---
 
-# Update Git Author
+## ⚙️ Update Git Author Configuration
 
-Configure the correct author information.
+Set the correct author information for future commits:
 
 ```bash
-git config --global user.name "Logesh Kumar"
-git config --global user.email "iamdevops995@gmail.com"
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 ```
 
-Verify:
+**Verify the change:**
 
 ```bash
 git config --global --list
 ```
 
+?> Use the email associated with your GitHub account so commits are properly linked to your profile.
+
 ---
 
-# Fix Only the Last Commit
+## ✏️ Method 1: Fix Only the Last Commit
 
 If only the latest commit has the wrong author:
 
 ```bash
-git commit --amend --author="Logesh Kumar <iamdevops995@gmail.com>" --no-edit
+git commit --amend --author="Your Name <your.email@example.com>" --no-edit
 ```
 
-Verify:
+**Verify the change:**
 
 ```bash
 git log --format=fuller -1
 ```
 
-Example:
-
-```
-Author: Logesh Kumar <iamdevops995@gmail.com>
-```
-
-Push the updated commit:
+**Push the updated commit:**
 
 ```bash
 git push --force-with-lease
@@ -137,34 +122,36 @@ git push --force-with-lease
 
 ---
 
-# Fix Multiple Recent Commits
+## 🔄 Method 2: Fix Multiple Recent Commits
 
-If the last few commits have the wrong author:
+If the last few commits have the wrong author, use interactive rebase:
 
-```bash
-git rebase -i HEAD~5
-```
-
-Replace every
-
-```
-pick
-```
-
-with
-
-```
-edit
-```
-
-For every stopped commit:
+**Step 1: Start interactive rebase**
 
 ```bash
-git commit --amend --author="Logesh Kumar <iamdevops995@gmail.com>" --no-edit
+git rebase -i HEAD~5    # Replace 5 with number of commits
+```
+
+**Step 2: Mark commits for editing**
+
+Change `pick` to `edit` for each commit you want to fix:
+
+```
+edit a1b2c3d Commit message 1
+edit b2c3d4e Commit message 2
+pick c3d4e5f Commit message 3 (keep this one)
+```
+
+**Step 3: Amend each stopped commit**
+
+```bash
+git commit --amend --author="Your Name <your.email@example.com>" --no-edit
 git rebase --continue
 ```
 
-Finally:
+Repeat for each commit marked with `edit`.
+
+**Step 4: Push the changes**
 
 ```bash
 git push --force-with-lease
@@ -172,154 +159,91 @@ git push --force-with-lease
 
 ---
 
-# Fix an Entire Repository (Recommended)
+## 🗄️ Method 3: Fix Entire Repository
 
-If **many commits** (20, 30, 100+) have the wrong author, use **git-filter-repo**.
+For many commits (20, 30, 100+), use **git-filter-repo**.
 
-Install:
+### Install git-filter-repo
 
 ```bash
 pip install git-filter-repo
 ```
 
-Verify:
+**Verify installation:**
 
 ```bash
 git filter-repo --version
 ```
 
-Rewrite every commit:
+### Rewrite All Commits
 
 ```bash
 git filter-repo --force \
-    --name-callback '
-return b"Logesh Kumar"
-' \
-    --email-callback '
-return b"iamdevops995@gmail.com"
-'
+    --name-callback 'return b"Your Name"' \
+    --email-callback 'return b"your.email@example.com"'
 ```
 
-This updates every commit in the repository.
+!> ⚠️ This rewrites ALL commits in the repository.
 
----
+### Re-add Remote (Required)
 
-# Why Did My Remote Disappear?
-
-After running `git filter-repo`, you may see:
-
-```
-fatal: No configured push destination
-```
-
-or
-
-```
-fatal: 'origin' does not appear to be a git repository
-```
-
-This is expected.
-
-**git-filter-repo intentionally removes the remote** to prevent accidentally force-pushing rewritten history.
-
-Check:
+After running `git filter-repo`, the remote is intentionally removed:
 
 ```bash
+# Check remotes (will be empty)
 git remote -v
+
+# Add remote back
+git remote add origin https://github.com/username/repository.git
+
+# Or using SSH
+git remote add origin git@github.com:username/repository.git
 ```
 
-Output:
-
-```
-(no output)
-```
-
----
-
-# Add the Remote Again
-
-HTTPS:
+### Push Rewritten History
 
 ```bash
-git remote add origin https://github.com/<username>/<repository>.git
-```
+# Push specific branch
+git push --force -u origin main
 
-SSH:
-
-```bash
-git remote add origin git@github.com:<username>/<repository>.git
-```
-
-Verify:
-
-```bash
-git remote -v
-```
-
-Example:
-
-```
-origin  https://github.com/iamdevops995/Devops-Documentation.git (fetch)
-origin  https://github.com/iamdevops995/Devops-Documentation.git (push)
-```
-
----
-
-# Push Rewritten History
-
-Push a branch:
-
-```bash
-git push --force -u origin docsify-redesign
-```
-
-Push all branches:
-
-```bash
+# Push all branches
 git push --force --all
-```
 
-Push tags:
-
-```bash
+# Push all tags
 git push --force --tags
 ```
 
 ---
 
-# Common Errors
+## ❌ Common Errors & Solutions
 
-## Error 1
+### Error: Invalid Author Format
 
 ```
 fatal: --author is not 'Name <email>'
 ```
 
-Wrong:
+**Wrong:**
 
 ```bash
-git commit --amend --author="Logesh Kumar iamdevops995@gmail.com"
+git commit --amend --author="Name email@example.com"
 ```
 
-Correct:
+**Correct:**
 
 ```bash
-git commit --amend --author="Logesh Kumar <iamdevops995@gmail.com>"
+git commit --amend --author="Name <email@example.com>"
 ```
 
 ---
 
-## Error 2
+### Error: No Push Destination
 
 ```
 fatal: No configured push destination
 ```
 
-Reason:
-
-Remote repository has been removed.
-
-Solution:
+**Solution:** Re-add the remote:
 
 ```bash
 git remote add origin <repository-url>
@@ -327,39 +251,35 @@ git remote add origin <repository-url>
 
 ---
 
-## Error 3
+### Error: Origin Not Found
 
 ```
 fatal: 'origin' does not appear to be a git repository
 ```
 
-Reason:
-
-No remote named `origin` exists.
-
-Solution:
+**Solution:** Add the remote:
 
 ```bash
-git remote add origin https://github.com/<username>/<repository>.git
+git remote add origin https://github.com/username/repository.git
 ```
 
 ---
 
-# Verify Commit Authors
+## ✅ Verify Commit Authors
 
-Show author information:
+**Show author for all commits:**
 
 ```bash
 git log --pretty=format:"%h %an <%ae>"
 ```
 
-Detailed view:
+**Detailed view:**
 
 ```bash
 git log --format=fuller
 ```
 
-Latest commit only:
+**Latest commit only:**
 
 ```bash
 git log --format=fuller -1
@@ -367,30 +287,40 @@ git log --format=fuller -1
 
 ---
 
-# Best Practices
+## 💡 Best Practices
 
-- Configure `user.name` and `user.email` before making your first commit.
-- Use the email associated with your GitHub account.
-- Prefer `git push --force-with-lease` instead of `--force`.
-- Rewrite history only when necessary.
-- Avoid force-pushing shared branches without coordinating with collaborators.
+| Practice | Description |
+|:---------|:------------|
+| ⚙️ **Configure Early** | Set `user.name` and `user.email` before first commit |
+| 📧 **Use GitHub Email** | Match your GitHub account email |
+| 🛡️ **Safe Force Push** | Use `--force-with-lease` instead of `--force` |
+| 🤝 **Coordinate** | Inform collaborators before force pushing |
+| 📝 **Rewrite Sparingly** | Only rewrite history when necessary |
 
 ---
 
-# Summary
+## 📋 Quick Reference
 
 | Scenario | Solution |
-|----------|----------|
-| Wrong author on last commit | `git commit --amend` |
-| Wrong author on a few commits | Interactive rebase |
+|:---------|:---------|
+| Wrong author on last commit | `git commit --amend --author="..."` |
+| Wrong author on few commits | Interactive rebase with `edit` |
 | Wrong author on many commits | `git filter-repo` |
-| Remote disappeared | Re-add `origin` |
-| Need to update GitHub | Force push rewritten history |
+| Remote disappeared | `git remote add origin <url>` |
+| Push rewritten history | `git push --force-with-lease` |
 
 ---
 
-# References
+## 🔗 References
 
-- Git Commit Documentation: https://git-scm.com/docs/git-commit
-- Git Rebase Documentation: https://git-scm.com/docs/git-rebase
-- Git Filter Repo: https://github.com/newren/git-filter-repo
+- [Git Commit Documentation](https://git-scm.com/docs/git-commit)
+- [Git Rebase Documentation](https://git-scm.com/docs/git-rebase)
+- [Git Filter Repo](https://github.com/newren/git-filter-repo)
+
+---
+
+## 🔗 Next Steps
+
+- [Git Stash](/Git/Git/Git%20stash.md) - Save work temporarily
+- [Git Squashing](/Git/Git/Git%20Squashing.md) - Combine commits
+- [Git Overview](/Git/README.md) - Return to Git documentation

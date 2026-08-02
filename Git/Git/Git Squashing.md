@@ -185,8 +185,10 @@ git push --force-with-lease
 
 ## 📋 Rebase Commands Reference
 
+Use these commands in the interactive rebase editor:
+
 | Command | Short | Action |
-|---------|-------|--------|
+|:--------|:-----:|:-------|
 | `pick` | `p` | Keep commit as-is |
 | `reword` | `r` | Keep commit, edit message |
 | `edit` | `e` | Stop for amending |
