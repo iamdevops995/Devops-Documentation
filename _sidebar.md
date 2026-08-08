@@ -94,6 +94,14 @@
 
     * [Filestore](/GCP/README.md#filestore)
 
+  * <span class="sb-cat">Security & Access</span>
+
+    * [IAP SSH Setup Guide](/GCP/GCP%20IAP%20→%20Windows%20VM%20→%20SSH.md)
+
+    * [IAP SSH Quick Reference](/GCP/gcp-iap-windows-ssh1.md)
+
+    * [Windows OpenSSH Setup](/GCP/gcp-iap-windows-ssh.md)
+
 * <span class="sb-cat"><i class="fas fa-dharmachakra sb-ico"></i> Kubernetes</span>
 
   * [Overview](/Kubernetes/README.md)

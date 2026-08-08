@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"5007014c690e138a","type":"text","text":"Kubectl","x":-1503,"y":-1337,"width":250,"height":60},
+		{"id":"90833422b151b8ed","type":"text","text":"user Interface","x":-1503,"y":-1087,"width":250,"height":60},
+		{"id":"da04f8fafa6bbcd7","type":"text","text":"Control Node / Master Node","x":-903,"y":-1422,"width":540,"height":500},
+		{"id":"0a623dc1b0676451","type":"text","text":"Scheduler","x":-743,"y":-1222,"width":220,"height":50,"color":"2"},
+		{"id":"4654785c6191b467","type":"text","text":"Controller Manager","x":-743,"y":-1142,"width":220,"height":50,"color":"5"},
+		{"id":"220751fc656e2395","type":"text","text":"Etcd","x":-743,"y":-1062,"width":220,"height":50,"color":"6"},
+		{"id":"935a5dae5984d752","type":"text","text":"API Server","x":-743,"y":-1302,"width":220,"height":50,"color":"4"},
+		{"id":"46a353d2b10c59c5","type":"text","text":"Worker Node 01","x":37,"y":-1117,"width":504,"height":431},
+		{"id":"6dbd37b1ca159980","type":"text","text":"POD1\nContainer1","x":119,"y":-1011,"width":143,"height":128,"color":"1"},
+		{"id":"7dde2c077906af96","type":"text","text":"Docker","x":206,"y":-846,"width":190,"height":50,"color":"5"},
+		{"id":"05cd7eb5eb2247a1","type":"text","text":"Kubelet","x":102,"y":-766,"width":160,"height":50,"color":"2"},
+		{"id":"e0a1457b9951ba1a","type":"text","text":"POD2\nContainer1\nContainer2","x":321,"y":-1011,"width":140,"height":128,"color":"1"},
+		{"id":"3353232bd0718ad4","type":"text","text":"Kube-proxy","x":321,"y":-766,"width":160,"height":50,"color":"6"},
+		{"id":"bac9a45df68c7c29","type":"text","text":"Worker Node 01","x":37,"y":-1612,"width":504,"height":390},
+		{"id":"9595b86e33f84ebb","type":"text","text":"Kubelet","x":78,"y":-1297,"width":160,"height":50,"color":"2"},
+		{"id":"0bf98620ce4f1044","type":"text","text":"POD1\nContainer1","x":95,"y":-1542,"width":143,"height":128,"color":"1"},
+		{"id":"77d6653346e01d4a","type":"text","text":"Docker","x":182,"y":-1377,"width":190,"height":50,"color":"5"},
+		{"id":"bbbd6ea40819f615","type":"text","text":"POD2\nContainer1\nContainer2","x":297,"y":-1542,"width":140,"height":128,"color":"1"},
+		{"id":"93c0f6992138eae9","type":"text","text":"Kube-proxy","x":297,"y":-1297,"width":160,"height":50,"color":"6"}
+	],
+	"edges":[
+		{"id":"1435fad75e98767f","fromNode":"da04f8fafa6bbcd7","fromSide":"right","toNode":"bac9a45df68c7c29","toSide":"left"},
+		{"id":"d1f400247025fad6","fromNode":"da04f8fafa6bbcd7","fromSide":"right","toNode":"46a353d2b10c59c5","toSide":"left"},
+		{"id":"e13c2a627453f008","fromNode":"5007014c690e138a","fromSide":"right","toNode":"da04f8fafa6bbcd7","toSide":"left"},
+		{"id":"3fadb1658e32b60e","fromNode":"90833422b151b8ed","fromSide":"right","toNode":"da04f8fafa6bbcd7","toSide":"left"}
+	]
+}

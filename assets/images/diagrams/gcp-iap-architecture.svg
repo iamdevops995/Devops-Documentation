@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="gcpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4285F4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34A853;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="windowsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00BCF2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="securityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA4335;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBC04;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">GCP IAP SSH Architecture</text>
+  
+  <!-- Local Machine Box -->
+  <rect x="320" y="55" width="160" height="70" rx="10" fill="#2d2d44" stroke="#6366f1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="82" font-family="Arial, sans-serif" font-size="12" fill="#a5b4fc" text-anchor="middle">Local Machine</text>
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">gcloud CLI + SSH</text>
+  <text x="400" y="115" font-family="Arial, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Private Key: ~/.ssh/windows_vsts</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M400 125 L400 155" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+  </defs>
+  
+  <!-- IAP Box -->
+  <rect x="280" y="160" width="240" height="80" rx="10" fill="url(#gcpGrad)" filter="url(#shadow)"/>
+  <text x="400" y="190" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Identity-Aware Proxy (IAP)</text>
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="11" fill="#e8f5e9" text-anchor="middle">IAM: roles/iap.tunnelResourceAccessor</text>
+  <text x="400" y="228" font-family="Arial, sans-serif" font-size="10" fill="#c8e6c9" text-anchor="middle">TCP Forwarding + Authentication</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M400 240 L400 270" stroke="#34A853" stroke-width="2" marker-end="url(#arrowhead2)"/>
+  <defs>
+    <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34A853"/>
+    </marker>
+  </defs>
+  <text x="470" y="260" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">35.235.240.0/20</text>
+  
+  <!-- VPC Firewall Box -->
+  <rect x="300" y="275" width="200" height="60" rx="8" fill="url(#securityGrad)" filter="url(#shadow)"/>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">VPC Firewall</text>
+  <text x="400" y="318" font-family="Arial, sans-serif" font-size="10" fill="#fff3e0" text-anchor="middle">allow-iap-ssh: tcp:22</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M400 335 L400 365" stroke="#EA4335" stroke-width="2" marker-end="url(#arrowhead3)"/>
+  <defs>
+    <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#EA4335"/>
+    </marker>
+  </defs>
+  
+  <!-- Windows VM Box -->
+  <rect x="260" y="370" width="280" height="120" rx="12" fill="url(#windowsGrad)" filter="url(#shadow)"/>
+  <text x="400" y="398" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Private Windows VM</text>
+  <text x="400" y="418" font-family="Arial, sans-serif" font-size="11" fill="#e3f2fd" text-anchor="middle">No External IP</text>
+  <line x1="290" y1="430" x2="510" y2="430" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+  <text x="400" y="448" font-family="Arial, sans-serif" font-size="11" fill="#bbdefb" text-anchor="middle">OpenSSH Server :22</text>
+  <text x="400" y="466" font-family="Arial, sans-serif" font-size="10" fill="#90caf9" text-anchor="middle">User: vsts</text>
+  <text x="400" y="482" font-family="Arial, sans-serif" font-size="9" fill="#64b5f6" text-anchor="middle">authorized_keys: C:\Users\vsts\.ssh\</text>
+  
+  <!-- Arrow 4 (Outbound) -->
+  <path d="M400 490 L400 520" stroke="#00BCF2" stroke-width="2" marker-end="url(#arrowhead4)"/>
+  <defs>
+    <marker id="arrowhead4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00BCF2"/>
+    </marker>
+  </defs>
+  <text x="440" y="510" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Outbound</text>
+  
+  <!-- Cloud NAT Box -->
+  <rect x="320" y="525" width="160" height="50" rx="8" fill="#2d2d44" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="550" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">Cloud NAT</text>
+  <text x="400" y="566" font-family="Arial, sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">Outbound Internet Access</text>
+  
+  <!-- Side Labels -->
+  <!-- Inbound Label -->
+  <rect x="50" y="200" width="120" height="70" rx="6" fill="#1e1e30" stroke="#6366f1" stroke-width="1"/>
+  <text x="110" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#a5b4fc" text-anchor="middle">INBOUND</text>
+  <text x="110" y="243" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">IAP Tunnel</text>
+  <text x="110" y="258" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">SSH Access</text>
+  
+  <!-- Outbound Label -->
+  <rect x="630" y="450" width="120" height="70" rx="6" fill="#1e1e30" stroke="#10b981" stroke-width="1"/>
+  <text x="690" y="475" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7" text-anchor="middle">OUTBOUND</text>
+  <text x="690" y="493" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Cloud NAT</text>
+  <text x="690" y="508" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Internet Access</text>
+  
+  <!-- Connection lines to labels -->
+  <path d="M170 235 L260 235" stroke="#6366f1" stroke-width="1" stroke-dasharray="4,4"/>
+  <path d="M540 485 L630 485" stroke="#10b981" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- Key Points Box -->
+  <rect x="580" y="160" width="180" height="140" rx="8" fill="#1e1e30" stroke="#f59e0b" stroke-width="1"/>
+  <text x="670" y="182" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fbbf24" text-anchor="middle">Key Points</text>
+  <text x="595" y="205" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• No public IP required</text>
+  <text x="595" y="222" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• IAM controls access</text>
+  <text x="595" y="239" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• Firewall allows IAP only</text>
+  <text x="595" y="256" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• SSH key authentication</text>
+  <text x="595" y="273" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• NAT for outbound</text>
+  <text x="595" y="290" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">• Zero Trust model</text>
+</svg>
