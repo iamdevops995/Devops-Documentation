@@ -4,7 +4,7 @@
 
 The goal is to connect to a private Windows VM using SSH through Google Cloud Identity-Aware Proxy (IAP).
 
-![GCP IAP Architecture](/assets/images/diagrams/gcp-iap-architecture.svg)
+![GCP IAP Architecture](../assets/images/diagrams/gcp-iap-architecture.svg)
 
 ```text
 Your PC
@@ -782,7 +782,7 @@ PS C:\Users\vsts>
 
 ## 32. Final Architecture
 
-![GCP IAP Traffic Flow](/assets/images/diagrams/gcp-iap-traffic-flow.svg)
+![GCP IAP Traffic Flow](../assets/images/diagrams/gcp-iap-traffic-flow.svg)
 
 ```text
                          Internet

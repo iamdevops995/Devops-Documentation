@@ -8,7 +8,7 @@ The setup can be created in a personal GCP account for learning and testing.
 
 ## Architecture Diagram
 
-![GCP IAP Architecture](/assets/images/diagrams/gcp-iap-architecture.svg)
+![GCP IAP Architecture](../assets/images/diagrams/gcp-iap-architecture.svg)
 
 The final architecture:
 
@@ -742,7 +742,7 @@ Follow the implementation in this order:
 
 ## Traffic Flow Diagram
 
-![GCP IAP Traffic Flow](/assets/images/diagrams/gcp-iap-traffic-flow.svg)
+![GCP IAP Traffic Flow](../assets/images/diagrams/gcp-iap-traffic-flow.svg)
 
 The completed learning environment will look like this:
 
